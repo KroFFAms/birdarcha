@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Bir Darcha — Xizmat</title>
-<!-- manifestsiz: iPhone 'Bosh ekranga qo'shish' apple meta orqali ishlaydi -->
+<!-- manifestsiz -->
 <meta name="theme-color" content="#0f766e">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -155,7 +155,7 @@
 <div id="appView" class="hidden">
   <header>
     <div><div class="title" id="viewTitle">Bosh sahifa</div><div class="who" id="whoAmI"></div></div>
-    <div><button class="btn-out" id="btnLogout">Chiqish</button><div class="ver">v5</div></div>
+    <div><button class="btn-out" id="btnLogout">Chiqish</button><div class="ver">v6</div></div>
   </header>
 
   <div class="wrap">
@@ -192,18 +192,48 @@
         <div class="tcard click"><div class="lbl">Click</div><div class="val num" id="dClick">0</div></div>
         <div class="tcard karta"><div class="lbl">Karta</div><div class="val num" id="dKarta">0</div></div>
       </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+        <div class="tcard debt"><div class="lbl">Xarajat</div><div class="val num" id="dExp">0</div></div>
+        <div class="tcard paid"><div class="lbl">Sof foyda</div><div class="val num" id="dNet">0</div></div>
+      </div>
+      <div class="card"><div class="section-title" style="margin:0 0 8px">Oxirgi 7 kun (tushum)</div><div id="chart7"></div></div>
       <div class="section-title">Yozuvlar · <span id="dCount">0</span> ta</div>
       <div id="dashList"></div>
     </div>
 
     <!-- ADD -->
     <div id="pgAdd" class="page hidden">
-      <div class="card">
+      <div class="seg seg2" id="addSub">
+        <button data-s="xizmat" class="on">Xizmat</button>
+        <button data-s="xarajat">Xarajat</button>
+      </div>
+      <div id="addXarajatCard" class="card hidden">
+        <div id="expMsg"></div>
+        <label>Izoh (nima uchun)</label>
+        <input id="xIzoh" type="text" placeholder="Masalan: ijara, tovar, transport">
+        <label>Summa</label>
+        <input id="xSumma" type="number" inputmode="numeric" min="0" placeholder="0">
+        <label>Sana</label>
+        <input id="xSana" type="date">
+        <div id="xFilialWrap"><label>Filial</label><select id="xFilial"></select></div>
+        <label>To'lov turi</label>
+        <div class="seg" id="xPaySeg">
+          <button type="button" data-k="naqd" class="on">Naqd</button>
+          <button type="button" data-k="payme">Payme</button>
+          <button type="button" data-k="click">Click</button>
+          <button type="button" data-k="karta">Karta</button>
+        </div>
+        <button class="btn" id="btnAddExp">Xarajatni saqlash</button>
+      </div>
+      <div id="addXizmatCard" class="card">
         <div id="addMsg"></div>
         <label>Mijoz ismi</label>
-        <input id="fMijoz" type="text" placeholder="Ism familiya">
+        <input id="fMijoz" type="text" list="mijozList" placeholder="Ism familiya">
+        <datalist id="mijozList"></datalist>
         <label>Telefon</label>
         <input id="fTel" type="tel" inputmode="tel" placeholder="+998 __ ___ __ __">
+        <label>Sana</label>
+        <input id="fSana" type="date">
         <div id="filialAddWrap">
           <label>Filial</label>
           <select id="fFilial"></select>
@@ -244,10 +274,11 @@
 
     <!-- HISOBOT -->
     <div id="pgReport" class="page hidden">
-      <div class="seg seg3" id="rpSub">
+      <div class="seg" id="rpSub">
         <button data-s="davrlar" class="on">Davrlar</button>
         <button data-s="xodimlar">Xodimlar</button>
-        <button data-s="xizmatlar">Xizmatlar</button>
+        <button data-s="xizmatlar">Xizmat</button>
+        <button data-s="kassa">Kassa</button>
       </div>
       <button class="btn btn-ghost" id="btnExcelRep" style="margin-bottom:14px">📥 Excelga yuklash</button>
 
@@ -306,6 +337,24 @@
           <tbody id="svcReportBody"></tbody></table>
         </div>
       </div>
+
+      <div id="rpKassa" class="hidden">
+        <div class="filters"><input id="ksDate" type="date"></div>
+        <div class="grid4">
+          <div class="tcard naqd"><div class="lbl">Naqd</div><div class="val num" id="ksNaqd">0</div></div>
+          <div class="tcard payme"><div class="lbl">Payme</div><div class="val num" id="ksPayme">0</div></div>
+          <div class="tcard click"><div class="lbl">Click</div><div class="val num" id="ksClick">0</div></div>
+          <div class="tcard karta"><div class="lbl">Karta</div><div class="val num" id="ksKarta">0</div></div>
+        </div>
+        <div class="grid3">
+          <div class="tcard"><div class="lbl">Tushum</div><div class="val num" id="ksIn">0</div></div>
+          <div class="tcard debt"><div class="lbl">Xarajat</div><div class="val num" id="ksExp">0</div></div>
+          <div class="tcard paid"><div class="lbl">Naqd qoldiq</div><div class="val num" id="ksCash">0</div></div>
+        </div>
+        <button class="btn" id="btnCloseDay" style="margin-bottom:14px">Kunni yopish</button>
+        <div class="section-title">Yopilgan kunlar</div>
+        <div id="kassaHist"></div>
+      </div>
     </div>
 
     <!-- MIJOZLAR -->
@@ -348,6 +397,8 @@
       <div class="card">
         <div id="svcMsg"></div>
         <label>Yangi xizmat nomi</label><input id="nsName" type="text" placeholder="Xizmat nomi">
+        <label>Kategoriya (ixtiyoriy)</label><input id="nsCat" type="text" list="catList" placeholder="Masalan: Nusxa, Rasmiylashtirish">
+        <datalist id="catList"></datalist>
         <label>Narxi</label><input id="nsPrice" type="number" inputmode="numeric" min="0" placeholder="0">
         <button class="btn" id="btnAddSvc">Xizmat qo'shish</button>
       </div>
@@ -365,6 +416,12 @@
           <button class="btn" id="btnImport">Import qilish (<span id="impN">0</span> qator)</button>
         </div>
       </div>
+
+      <div class="section-title">Zaxira</div>
+      <div class="card">
+        <button class="btn btn-ghost" id="btnBackup">📦 To'liq zaxira (Excel)</button>
+      </div>
+
     </div>
 
   </div>
@@ -379,6 +436,7 @@
     <div id="editMsg"></div>
     <label>Mijoz ismi</label><input id="eMijoz" type="text">
     <label>Telefon</label><input id="eTel" type="tel">
+    <label>Sana</label><input id="eSana" type="date">
     <div id="eFilialWrap"><label>Filial</label><select id="eFilial"></select></div>
     <label>Xizmat nomi</label><input id="eXizmat" type="text">
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px">
@@ -407,10 +465,11 @@ const SUPABASE_KEY="sb_publishable_xEPsFgv-ACNKeAFJt2MMiA_Q3Vbte4F";
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
 const PAY=[{k:'naqd',l:'Naqd'},{k:'payme',l:'Payme'},{k:'click',l:'Click'},{k:'karta',l:'Karta'}];
-let user=null, services=[], filials=[], payChoice='naqd', clientsData={}, dashRows=[];
+let user=null, services=[], filials=[], payChoice='naqd', clientsData={}, dashRows=[], dashExp=[], expPay='naqd', custMap={};
 let editPay='naqd', editId=null, deferredInstall=null, importData=null;
 
 const $=id=>document.getElementById(id);
+const pad=n=>String(n).padStart(2,'0');
 const fmt=n=>(Number(n)||0).toLocaleString('ru-RU');
 function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function msg(el,t,ty){ el.innerHTML=t?`<div class="msg ${ty}">${t}</div>`:""; }
@@ -418,6 +477,11 @@ function save(u){ try{localStorage.setItem('bd_user',JSON.stringify(u));}catch(e
 function load(){ try{return JSON.parse(localStorage.getItem('bd_user')||'null');}catch(e){return null;} }
 function wipe(){ try{localStorage.removeItem('bd_user');}catch(e){} }
 
+function todayStr(){ const d=new Date(); return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+function dateToISO(dstr){ // keep current time-of-day so ordering stays natural
+  if(!dstr) return null; const now=new Date(); const d=new Date(dstr);
+  d.setHours(now.getHours(),now.getMinutes(),now.getSeconds(),0); return d.toISOString(); }
+function isoToDate(iso){ const d=new Date(iso); return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
 function periodStart(p){ const d=new Date();
   if(p==='today'){d.setHours(0,0,0,0);return d.toISOString();}
   if(p==='week'){d.setDate(d.getDate()-7);return d.toISOString();}
@@ -458,6 +522,9 @@ async function enterApp(){
   $('tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>switchTab(b.dataset.p));
   await loadServices();
   await loadFilials();
+  loadCustomers();
+  try{ const lf=localStorage.getItem('bd_filial'); if(lf && filials.some(x=>x.nom===lf)) $('fFilial').value=lf; }catch(e){}
+  $('fSana').value=todayStr(); $('xSana').value=todayStr();
   if(user.rol==='boss') loadXodimSelect();
   switchTab('dash');
 }
@@ -477,8 +544,16 @@ function switchTab(p){
 async function loadServices(){
   const {data}=await sb.from('xizmat_turlari').select('*').eq('faol',true).order('nom');
   services=data||[];
-  $('svcPick').innerHTML=services.map(s=>`<option value="${s.id}">${esc(s.nom)} — ${fmt(s.narx)}</option>`).join('')
-    +'<option value="__m">Boshqa (qo\'lda)</option>';
+  const cats={};
+  services.forEach(s=>{ const c=s.kategoriya||'Boshqa'; (cats[c]=cats[c]||[]).push(s); });
+  let html='';
+  Object.keys(cats).sort().forEach(c=>{
+    html+=`<optgroup label="${esc(c)}">`+cats[c].map(s=>`<option value="${s.id}">${esc(s.nom)} — ${fmt(s.narx)}</option>`).join('')+'</optgroup>';
+  });
+  html+='<option value="__m">Boshqa (qo\'lda)</option>';
+  $('svcPick').innerHTML=html;
+  const catNames=[...new Set(services.map(s=>s.kategoriya).filter(Boolean))];
+  const dl=$('catList'); if(dl) dl.innerHTML=catNames.map(c=>`<option value="${esc(c)}">`).join('');
   onServicePick();
 }
 function onServicePick(){
@@ -497,10 +572,12 @@ async function loadFilials(){
   const opts=filials.map(f=>`<option value="${esc(f.nom)}">${esc(f.nom)}</option>`).join('');
   $('fFilial').innerHTML=opts||'<option value="">—</option>';
   $('eFilial').innerHTML='<option value="">—</option>'+opts;
+  $('xFilial').innerHTML='<option value="">—</option>'+opts;
   document.querySelectorAll('.filialFilter').forEach(sel=>{
     const cur=sel.value; sel.innerHTML='<option value="">Barcha filial</option>'+opts; sel.value=cur;
   });
   $('filialAddWrap').style.display=filials.length?'':'none';
+  var _xw=$('xFilialWrap'); if(_xw) _xw.style.display=filials.length?'':'none';
   document.querySelectorAll('.filialFilter').forEach(s=>s.parentElement.style.display=filials.length?'':'none');
 }
 
@@ -519,21 +596,32 @@ async function addXizmat(){
     mijoz_nomi:mijoz, telefon:$('fTel').value.trim(), xizmat_nomi:xizmatNom,
     narx, soni, summa, tolangan_summa:paid, tolov_holati:holati, tolov_turi:payChoice,
     filial:(filials.length?$('fFilial').value:null),
+    sana:(dateToISO($('fSana').value)||new Date().toISOString()),
     xodim_id:user.id, xodim_ism:user.ism, izoh:$('fIzoh').value.trim() });
   $('btnAdd').disabled=false;
   if(error){ msg($('addMsg'),'Xatolik: '+error.message,'err'); return; }
   $('fMijoz').value='';$('fTel').value='';$('fXizmat').value='';$('fSoni').value='1';
   $('fPaid').value='';$('fIzoh').value='';$('fFullPaid').checked=true;$('paidWrap').classList.add('hidden');
-  $('svcPick').selectedIndex=0; onServicePick(); setPay('naqd');
+  $('svcPick').selectedIndex=0; onServicePick(); setPay('naqd'); $('fSana').value=todayStr();
+  try{ if(filials.length) localStorage.setItem('bd_filial',$('fFilial').value); }catch(e){}
+  loadCustomers();
   msg($('addMsg'),'Saqlandi ✓','ok'); setTimeout(()=>msg($('addMsg'),'',''),2000);
 }
 
 /* ---------- fetch/sum ---------- */
 async function fetchRows(from,to,xodimId,filial){
-  let q=sb.from('xizmatlar').select('*').order('sana',{ascending:false}).limit(5000);
-  if(from) q=q.gte('sana',from); if(to) q=q.lte('sana',to);
-  if(xodimId) q=q.eq('xodim_id',xodimId); if(filial) q=q.eq('filial',filial);
-  const {data}=await q; return data||[];
+  const size=1000; let all=[], page=0;
+  for(;;){
+    let q=sb.from('xizmatlar').select('*').order('sana',{ascending:false}).range(page*size,page*size+size-1);
+    if(from) q=q.gte('sana',from); if(to) q=q.lte('sana',to);
+    if(xodimId) q=q.eq('xodim_id',xodimId); if(filial) q=q.eq('filial',filial);
+    const {data,error}=await q;
+    if(error||!data||!data.length) break;
+    all=all.concat(data);
+    if(data.length<size||page>=60) break;
+    page++;
+  }
+  return all;
 }
 function sums(rows){ const s={total:0,paid:0,debt:0,cnt:rows.length,naqd:0,payme:0,click:0,karta:0};
   rows.forEach(r=>{ const t=Number(r.summa)||0,p=Number(r.tolangan_summa)||0;
@@ -549,7 +637,9 @@ async function loadDash(){
   else from=periodStart(pv);
   const fil=$('dashFilial').value||null;
   dashRows=await fetchRows(from,to,isBoss?null:user.id,fil);
+  dashExp=await fetchExpenses(from,to,fil);
   renderDash();
+  renderChart7(fil);
 }
 function renderDash(){
   const s=($('dashSearch').value||'').trim().toLowerCase();
@@ -559,13 +649,15 @@ function renderDash(){
   $('dTotal').textContent=fmt(t.total);$('dPaid').textContent=fmt(t.paid);$('dDebt').textContent=fmt(t.debt);
   $('dNaqd').textContent=fmt(t.naqd);$('dPayme').textContent=fmt(t.payme);
   $('dClick').textContent=fmt(t.click);$('dKarta').textContent=fmt(t.karta);
+  const exp=(dashExp||[]).reduce((x,e)=>x+(Number(e.summa)||0),0);
+  $('dExp').textContent=fmt(exp);
+  $('dNet').textContent=fmt(t.paid-exp);
   $('dCount').textContent=t.cnt;
   renderList($('dashList'), rows.slice(0,80), user.rol==='boss');
 }
 
 /* ---------- report: davrlar ---------- */
 const UZM=['Yanvar','Fevral','Mart','Aprel','May','Iyun','Iyul','Avgust','Sentabr','Oktabr','Noyabr','Dekabr'];
-const pad=n=>String(n).padStart(2,'0');
 function periodKey(iso,type){ const d=new Date(iso);
   if(type==='kun') return {key:`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`,label:`${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}`,sort:d.getTime()};
   if(type==='hafta'){ const t=new Date(d),o=(t.getDay()+6)%7; t.setDate(t.getDate()-o); t.setHours(0,0,0,0);
@@ -578,8 +670,10 @@ function switchReportSub(s){
   $('rpDavrlar').classList.toggle('hidden',s!=='davrlar');
   $('rpXodimlar').classList.toggle('hidden',s!=='xodimlar');
   $('rpXizmatlar').classList.toggle('hidden',s!=='xizmatlar');
+  $('rpKassa').classList.toggle('hidden',s!=='kassa');
   $('rpSub').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.s===s));
-  if(s==='davrlar') loadReport(); else if(s==='xodimlar') loadWorkers(); else loadServiceReport();
+  if(s==='davrlar') loadReport(); else if(s==='xodimlar') loadWorkers();
+  else if(s==='xizmatlar') loadServiceReport(); else loadKassa();
 }
 async function loadReport(){
   const xid=$('rpXodim').value||null, fil=$('rpFilial').value||null;
@@ -744,18 +838,18 @@ async function delFil(id){ if(!confirm('Bu filial o\'chirilsinmi?')) return;
 function renderServiceManage(){
   $('svcList').innerHTML=services.length?services.map(s=>
     `<div class="rec"><div class="top"><div>
-      <div class="name">${esc(s.nom)}</div><div class="svc num">${fmt(s.narx)} so'm</div></div></div>
+      <div class="name">${esc(s.nom)}</div><div class="svc num">${fmt(s.narx)} so'm${s.kategoriya?(' · '+esc(s.kategoriya)):''}</div></div></div>
       <div class="actions">
         <button class="btn btn-sm btn-ghost" onclick="editSvcPrice(${s.id})">Narx</button>
         <button class="btn btn-sm btn-danger" onclick="delSvc(${s.id})">O'chirish</button>
       </div></div>`).join('') : '<div class="empty">Xizmat yo\'q. Yuqoridan qo\'shing.</div>';
 }
 async function addService(){
-  const nom=$('nsName').value.trim(), narx=Number($('nsPrice').value)||0;
+  const nom=$('nsName').value.trim(), narx=Number($('nsPrice').value)||0, kategoriya=$('nsCat').value.trim()||null;
   if(!nom){ msg($('svcMsg'),'Xizmat nomini kiriting','err'); return; }
-  const {error}=await sb.from('xizmat_turlari').insert({nom,narx});
+  const {error}=await sb.from('xizmat_turlari').insert({nom,narx,kategoriya});
   if(error){ msg($('svcMsg'),'Xatolik: '+error.message,'err'); return; }
-  $('nsName').value='';$('nsPrice').value='';
+  $('nsName').value='';$('nsPrice').value='';$('nsCat').value='';
   msg($('svcMsg'),'Qo\'shildi ✓','ok'); setTimeout(()=>msg($('svcMsg'),'',''),2000);
   await loadServices(); renderServiceManage();
 }
@@ -840,13 +934,130 @@ async function doImport(){
   $('impFile').value=''; $('impMap').classList.add('hidden'); importData=null;
 }
 
+/* ---------- customers autocomplete ---------- */
+async function loadCustomers(){
+  const size=1000; let all=[], page=0;
+  for(;;){
+    const {data,error}=await sb.from('xizmatlar').select('mijoz_nomi,telefon').order('sana',{ascending:false}).range(page*size,page*size+size-1);
+    if(error||!data||!data.length) break;
+    all=all.concat(data);
+    if(data.length<size||page>=60) break; page++;
+  }
+  custMap={};
+  all.forEach(r=>{ const n=(r.mijoz_nomi||'').trim(); if(!n) return;
+    if(!(n in custMap) || (!custMap[n] && r.telefon)) custMap[n]=r.telefon||''; });
+  const names=Object.keys(custMap).slice(0,3000);
+  const dl=$('mijozList'); if(dl) dl.innerHTML=names.map(n=>`<option value="${esc(n)}">`).join('');
+}
+function onMijozInput(){ const v=$('fMijoz').value.trim(); if(custMap[v] && !$('fTel').value.trim()) $('fTel').value=custMap[v]; }
+
+/* ---------- expenses ---------- */
+async function fetchExpenses(from,to,filial){
+  const size=1000; let all=[], page=0;
+  for(;;){
+    let q=sb.from('xarajatlar').select('*').order('sana',{ascending:false}).range(page*size,page*size+size-1);
+    if(from) q=q.gte('sana',from); if(to) q=q.lte('sana',to); if(filial) q=q.eq('filial',filial);
+    const {data,error}=await q;
+    if(error||!data||!data.length) break;
+    all=all.concat(data);
+    if(data.length<size||page>=60) break;
+    page++;
+  }
+  return all;
+}
+function setExpPay(k){ expPay=k; $('xPaySeg').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===k)); }
+async function addExpense(){
+  const izoh=$('xIzoh').value.trim(), summa=Number($('xSumma').value)||0;
+  if(summa<=0){ msg($('expMsg'),'Summani kiriting','err'); return; }
+  $('btnAddExp').disabled=true;
+  const {error}=await sb.from('xarajatlar').insert({izoh,summa,tolov_turi:expPay,
+    filial:(filials.length?$('xFilial').value:null), sana:(dateToISO($('xSana').value)||new Date().toISOString()),
+    xodim_id:user.id, xodim_ism:user.ism});
+  $('btnAddExp').disabled=false;
+  if(error){ msg($('expMsg'),'Xatolik: '+error.message,'err'); return; }
+  $('xIzoh').value='';$('xSumma').value=''; setExpPay('naqd'); $('xSana').value=todayStr();
+  msg($('expMsg'),'Saqlandi \u2713','ok'); setTimeout(()=>msg($('expMsg'),'',''),2000);
+}
+function switchAddSub(s){
+  $('addXizmatCard').classList.toggle('hidden',s!=='xizmat');
+  $('addXarajatCard').classList.toggle('hidden',s!=='xarajat');
+  $('addSub').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.s===s));
+}
+
+/* ---------- chart (last 7 days) ---------- */
+async function renderChart7(fil){
+  const from=periodStart('week');
+  const rows=await fetchRows(from,null,user.rol==='boss'?null:user.id,fil||null);
+  const days=[]; const now=new Date();
+  for(let i=6;i>=0;i--){ const d=new Date(now); d.setDate(now.getDate()-i); d.setHours(0,0,0,0);
+    days.push({t:d.getTime(),label:pad(d.getDate())+'.'+pad(d.getMonth()+1),sum:0}); }
+  rows.forEach(r=>{ const t=new Date(r.sana); t.setHours(0,0,0,0);
+    const it=days.find(x=>x.t===t.getTime()); if(it) it.sum+=Number(r.tolangan_summa)||0; });
+  const max=Math.max(1,...days.map(x=>x.sum)), W=308, gap=W/7, bw=gap*0.55;
+  let bars='';
+  days.forEach((x,i)=>{ const hh=Math.round(x.sum/max*88), cx=i*gap+(gap-bw)/2;
+    bars+=`<rect x="${cx.toFixed(1)}" y="${(96-hh)}" width="${bw.toFixed(1)}" height="${hh}" rx="3" fill="#0f766e"></rect>`;
+    bars+=`<text x="${(cx+bw/2).toFixed(1)}" y="112" font-size="9" text-anchor="middle" fill="#6b7784">${x.label}</text>`;
+  });
+  $('chart7').innerHTML=`<svg viewBox="0 0 ${W} 116" style="width:100%;height:116px">${bars}</svg>`;
+}
+
+/* ---------- kassa (kun yakuni) ---------- */
+async function loadKassa(){
+  const ds=$('ksDate').value || new Date().toISOString().slice(0,10);
+  $('ksDate').value=ds;
+  const rows=await fetchRows(dayStart(ds),dayEnd(ds),null,null);
+  const exps=await fetchExpenses(dayStart(ds),dayEnd(ds),null);
+  const s=sums(rows);
+  const exp=exps.reduce((x,e)=>x+(Number(e.summa)||0),0);
+  const expNaqd=exps.filter(e=>(e.tolov_turi||'naqd')==='naqd').reduce((x,e)=>x+(Number(e.summa)||0),0);
+  $('ksNaqd').textContent=fmt(s.naqd);$('ksPayme').textContent=fmt(s.payme);
+  $('ksClick').textContent=fmt(s.click);$('ksKarta').textContent=fmt(s.karta);
+  $('ksIn').textContent=fmt(s.paid);$('ksExp').textContent=fmt(exp);
+  $('ksCash').textContent=fmt(s.naqd-expNaqd);
+  window._ks={ds,s,exp}; loadKassaHist();
+}
+async function closeDay(){
+  if(!window._ks) return; const k=window._ks;
+  if(!confirm(k.ds+' kuni yopilsinmi?')) return;
+  const {error}=await sb.from('kassa_yopish').insert({sana:k.ds,naqd:k.s.naqd,payme:k.s.payme,
+    click:k.s.click,karta:k.s.karta,xarajat:k.exp,sof:k.s.paid-k.exp,xodim_ism:user.ism});
+  if(error){ alert('Xatolik: '+error.message); return; }
+  loadKassaHist(); alert('Kun yopildi \u2713');
+}
+async function loadKassaHist(){
+  const {data}=await sb.from('kassa_yopish').select('*').order('sana',{ascending:false}).limit(60);
+  const arr=data||[];
+  $('kassaHist').innerHTML=arr.length?arr.map(k=>
+    `<div class="rec"><div class="top"><div><div class="name">${k.sana}</div>
+      <div class="svc">Sof: ${fmt(k.sof)} \u00b7 Naqd: ${fmt(k.naqd)} \u00b7 Xarajat: ${fmt(k.xarajat)}</div></div></div></div>`).join('')
+    :'<div class="empty">Yopilgan kun yo\'q</div>';
+}
+
+/* ---------- backup ---------- */
+async function doBackup(){
+  const [rec,xr,sv,xd,fl]=await Promise.all([
+    sb.from('xizmatlar').select('*').limit(10000),
+    sb.from('xarajatlar').select('*').limit(10000),
+    sb.from('xizmat_turlari').select('*'),
+    sb.from('xodimlar').select('*'),
+    sb.from('filiallar').select('*')
+  ]);
+  const wb=XLSX.utils.book_new();
+  const add=(name,r)=>{ const a=(r&&r.data)?r.data:[];
+    const ws=a.length?XLSX.utils.json_to_sheet(a):XLSX.utils.aoa_to_sheet([["bo'sh"]]);
+    XLSX.utils.book_append_sheet(wb,ws,name); };
+  add('Yozuvlar',rec); add('Xarajatlar',xr); add('Xizmatlar',sv); add('Xodimlar',xd); add('Filiallar',fl);
+  XLSX.writeFile(wb,'birdarcha_backup_'+new Date().toISOString().slice(0,10)+'.xlsx');
+}
+
 /* ---------- record list ---------- */
 function renderList(el,rows,showXodim){
   if(!rows.length){ el.innerHTML='<div class="empty">Yozuv yo\'q</div>'; return; }
   el.innerHTML=rows.map(r=>{
     const summa=Number(r.summa)||0,paid=Number(r.tolangan_summa)||0,qarz=summa-paid,isDebt=qarz>0;
     const tur=r.tolov_turi||'naqd', tel=r.telefon?`<a class="call" href="tel:${esc(r.telefon)}">${esc(r.telefon)}</a>`:'';
-    const canEdit=user.rol==='boss'||r.xodim_id===user.id;
+    const canEdit=user.rol==='boss';
     const payBtn=isDebt?`<button class="btn btn-sm btn-ghost" onclick="payDebt(${r.id},${qarz})">To'lov</button>`:'';
     const editBtn=canEdit?`<button class="btn btn-sm btn-ghost" onclick="editRecord(${r.id})">Tahrir</button>`:'';
     const delBtn=canEdit?`<button class="btn btn-sm btn-danger" onclick="deleteRecord(${r.id})">O'chirish</button>`:'';
@@ -892,6 +1103,7 @@ async function editRecord(id){
   $('eXizmat').value=r.xizmat_nomi||''; $('eNarx').value=Number(r.narx)||Number(r.summa)||0;
   $('eSoni').value=Number(r.soni)||1; $('ePaid').value=Number(r.tolangan_summa)||0;
   $('eIzoh').value=r.izoh||'';
+  $('eSana').value=isoToDate(r.sana);
   $('eFilialWrap').style.display=filials.length?'':'none';
   $('eFilial').value=r.filial||'';
   setEditPay(r.tolov_turi||'naqd');
@@ -906,7 +1118,8 @@ async function saveEdit(){
   const {error}=await sb.from('xizmatlar').update({
     mijoz_nomi:$('eMijoz').value.trim(), telefon:$('eTel').value.trim(), xizmat_nomi:$('eXizmat').value.trim(),
     narx, soni, summa, tolangan_summa:paid, tolov_holati:holati, tolov_turi:editPay,
-    filial:(filials.length?$('eFilial').value:null), izoh:$('eIzoh').value.trim()
+    filial:(filials.length?$('eFilial').value:null), izoh:$('eIzoh').value.trim(),
+    sana:(dateToISO($('eSana').value)||undefined)
   }).eq('id',editId);
   if(error){ msg($('editMsg'),'Xatolik: '+error.message,'err'); return; }
   $('editModal').classList.add('hidden'); refreshCurrent();
@@ -918,6 +1131,7 @@ $('inParol').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 $('btnLogout').onclick=logout;
 $('btnAdd').onclick=addXizmat;
 $('svcPick').addEventListener('change',onServicePick);
+$('fMijoz').addEventListener('input',onMijozInput);
 $('fNarx').addEventListener('input',recalcSumma);
 $('fSoni').addEventListener('input',recalcSumma);
 $('fFullPaid').addEventListener('change',e=>$('paidWrap').classList.toggle('hidden',e.target.checked));
@@ -942,6 +1156,12 @@ $('btnAddFil').onclick=addFilial;
 $('btnAddSvc').onclick=addService;
 $('btnExcelRep').onclick=exportRecords;
 $('btnExcelCl').onclick=exportClients;
+$('addSub').querySelectorAll('button').forEach(b=>b.onclick=()=>switchAddSub(b.dataset.s));
+$('xPaySeg').querySelectorAll('button').forEach(b=>b.onclick=()=>setExpPay(b.dataset.k));
+$('btnAddExp').onclick=addExpense;
+$('ksDate').addEventListener('change',loadKassa);
+$('btnCloseDay').onclick=closeDay;
+$('btnBackup').onclick=doBackup;
 $('impFile').addEventListener('change',onImportFile);
 $('btnImport').onclick=doImport;
 $('editPaySeg').querySelectorAll('button').forEach(b=>b.onclick=()=>setEditPay(b.dataset.k));
@@ -950,8 +1170,8 @@ $('btnEditCancel').onclick=()=>$('editModal').classList.add('hidden');
 $('editModal').addEventListener('click',e=>{ if(e.target===$('editModal')) $('editModal').classList.add('hidden'); });
 
 /* ---------- PWA ---------- */
-/* single-file rejim */
-/* beforeinstallprompt: manifestsiz rejimda o'chirildi */
+/* single-file */
+/* off */
 $('btnInstall').onclick=async()=>{ if(!deferredInstall) return; deferredInstall.prompt();
   await deferredInstall.userChoice; deferredInstall=null; $('installHint').classList.add('hidden'); };
 
