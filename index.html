@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Bir Darcha — Xizmat</title>
+<!-- manifestsiz: iPhone 'Bosh ekranga qo'shish' apple meta orqali ishlaydi -->
+<meta name="theme-color" content="#0f766e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bir Darcha">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
 <style>
   :root{
     --bg:#eef1f4; --card:#ffffff; --ink:#1b2733; --muted:#6b7784;
@@ -61,7 +67,7 @@
   .seg{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:12px}
   .seg button{padding:11px 4px; border:1px solid var(--line); background:#fbfcfd; border-radius:10px; font-size:14px; font-weight:700; color:var(--muted); cursor:pointer}
   .seg button.on{background:var(--accent); color:#fff; border-color:var(--accent)}
-  .seg2{grid-template-columns:1fr 1fr}
+  .seg2{grid-template-columns:1fr 1fr} .seg3{grid-template-columns:1fr 1fr 1fr}
 
   .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px}
   .grid4{display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; margin-bottom:12px}
@@ -87,6 +93,7 @@
   .tag{font-size:11px; font-weight:700; padding:2px 7px; border-radius:6px; color:#fff}
   .tag.naqd{background:var(--naqd)} .tag.payme{background:var(--payme)}
   .tag.click{background:var(--click)} .tag.karta{background:var(--karta)}
+  .tag.fil{background:#475569}
   .rec .actions{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
 
   .section-title{font-size:13px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; margin:18px 0 8px}
@@ -118,6 +125,13 @@
   nav.tabs button{flex:1; background:none; border:0; padding:9px 2px 8px; font-size:11px; font-weight:600; color:var(--muted); cursor:pointer}
   nav.tabs button .ic{display:block; font-size:19px; line-height:1.1; margin-bottom:2px}
   nav.tabs button.on{color:var(--accent)}
+
+  /* modal */
+  .modal{position:fixed; inset:0; background:rgba(15,23,42,.5); z-index:50; display:flex; align-items:flex-end; justify-content:center}
+  .modal-card{background:#fff; width:100%; max-width:640px; max-height:92vh; overflow:auto; border-radius:18px 18px 0 0; padding:18px 16px calc(18px + env(safe-area-inset-bottom));}
+  .modal h3{margin:0 0 14px}
+  .install-hint{background:#fff; border:1px solid var(--accent); color:var(--accent); border-radius:12px; padding:10px 12px; margin-bottom:14px; font-size:13px; display:flex; gap:10px; align-items:center; justify-content:space-between}
+  .install-hint button{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -141,21 +155,32 @@
 <div id="appView" class="hidden">
   <header>
     <div><div class="title" id="viewTitle">Bosh sahifa</div><div class="who" id="whoAmI"></div></div>
-    <div><button class="btn-out" id="btnLogout">Chiqish</button><div class="ver">v4</div></div>
+    <div><button class="btn-out" id="btnLogout">Chiqish</button><div class="ver">v5</div></div>
   </header>
 
   <div class="wrap">
 
     <!-- DASHBOARD -->
     <div id="pgDash" class="page">
+      <div id="installHint" class="install-hint hidden">
+        <span>Ilovani telefonga o'rnating</span>
+        <button class="btn btn-sm btn-ghost" id="btnInstall">O'rnatish</button>
+      </div>
       <div class="filters">
         <select id="dashPeriod">
           <option value="today" selected>Bugun</option>
           <option value="week">7 kun</option>
           <option value="month">30 kun</option>
           <option value="year">Bu yil</option>
+          <option value="oraliq">Sana oralig'i</option>
+          <option value="all">Hammasi</option>
         </select>
+        <select id="dashFilial" class="filialFilter"><option value="">Barcha filial</option></select>
       </div>
+      <div class="filters" id="dashRange" style="display:none">
+        <input id="dashFrom" type="date"><input id="dashTo" type="date">
+      </div>
+      <div class="filters"><input id="dashSearch" type="text" placeholder="Mijoz yoki xizmat izlash"></div>
       <div class="grid3">
         <div class="tcard"><div class="lbl">Jami</div><div class="val num" id="dTotal">0</div></div>
         <div class="tcard paid"><div class="lbl">Tushum</div><div class="val num" id="dPaid">0</div></div>
@@ -167,7 +192,7 @@
         <div class="tcard click"><div class="lbl">Click</div><div class="val num" id="dClick">0</div></div>
         <div class="tcard karta"><div class="lbl">Karta</div><div class="val num" id="dKarta">0</div></div>
       </div>
-      <div class="section-title">So'nggi yozuvlar · <span id="dCount">0</span> ta</div>
+      <div class="section-title">Yozuvlar · <span id="dCount">0</span> ta</div>
       <div id="dashList"></div>
     </div>
 
@@ -179,6 +204,10 @@
         <input id="fMijoz" type="text" placeholder="Ism familiya">
         <label>Telefon</label>
         <input id="fTel" type="tel" inputmode="tel" placeholder="+998 __ ___ __ __">
+        <div id="filialAddWrap">
+          <label>Filial</label>
+          <select id="fFilial"></select>
+        </div>
         <label>Xizmat</label>
         <select id="svcPick"></select>
         <div id="manualName" class="hidden">
@@ -215,9 +244,10 @@
 
     <!-- HISOBOT -->
     <div id="pgReport" class="page hidden">
-      <div class="seg seg2" id="rpSub">
+      <div class="seg seg3" id="rpSub">
         <button data-s="davrlar" class="on">Davrlar</button>
         <button data-s="xodimlar">Xodimlar</button>
+        <button data-s="xizmatlar">Xizmatlar</button>
       </div>
       <button class="btn btn-ghost" id="btnExcelRep" style="margin-bottom:14px">📥 Excelga yuklash</button>
 
@@ -231,6 +261,10 @@
           </select>
           <select id="rpXodim"><option value="">Barcha xodim</option></select>
         </div>
+        <div class="filters">
+          <select id="rpFilial" class="filialFilter"><option value="">Barcha filial</option></select>
+        </div>
+        <div class="filters"><input id="rpFrom" type="date"><input id="rpTo" type="date"></div>
         <div class="grid4">
           <div class="tcard naqd"><div class="lbl">Naqd</div><div class="val num" id="rNaqd">0</div></div>
           <div class="tcard payme"><div class="lbl">Payme</div><div class="val num" id="rPayme">0</div></div>
@@ -255,6 +289,22 @@
           </select>
         </div>
         <div id="workersWrap"></div>
+      </div>
+
+      <div id="rpXizmatlar" class="hidden">
+        <div class="filters">
+          <select id="svPeriod">
+            <option value="today">Bugun</option>
+            <option value="week">7 kun</option>
+            <option value="month" selected>30 kun</option>
+            <option value="year">Bu yil</option>
+            <option value="all">Hammasi</option>
+          </select>
+        </div>
+        <div class="card" style="padding:8px 12px">
+          <table><thead><tr><th>Xizmat</th><th>Soni</th><th>Tushum</th></tr></thead>
+          <tbody id="svcReportBody"></tbody></table>
+        </div>
       </div>
     </div>
 
@@ -286,6 +336,14 @@
       </div>
       <div id="empList"></div>
 
+      <div class="section-title">Filiallar</div>
+      <div class="card">
+        <div id="filMsg"></div>
+        <label>Filial nomi</label><input id="nfName" type="text" placeholder="Masalan: Markaz">
+        <button class="btn" id="btnAddFil">Filial qo'shish</button>
+      </div>
+      <div id="filList"></div>
+
       <div class="section-title">Xizmatlar</div>
       <div class="card">
         <div id="svcMsg"></div>
@@ -294,11 +352,51 @@
         <button class="btn" id="btnAddSvc">Xizmat qo'shish</button>
       </div>
       <div id="svcList"></div>
+
+      <div class="section-title">Excel'dan qarz import</div>
+      <div class="card">
+        <div id="impMsg"></div>
+        <label>Excel fayl (mijoz, telefon, qarz)</label>
+        <input id="impFile" type="file" accept=".xlsx,.xls,.csv">
+        <div id="impMap" class="hidden">
+          <label>Ism ustuni</label><select id="mapIsm"></select>
+          <label>Telefon ustuni</label><select id="mapTel"></select>
+          <label>Qarz (summa) ustuni</label><select id="mapQarz"></select>
+          <button class="btn" id="btnImport">Import qilish (<span id="impN">0</span> qator)</button>
+        </div>
+      </div>
     </div>
 
   </div>
 
   <nav class="tabs" id="tabs"></nav>
+</div>
+
+<!-- EDIT MODAL -->
+<div id="editModal" class="modal hidden">
+  <div class="modal-card">
+    <h3>Yozuvni tahrirlash</h3>
+    <div id="editMsg"></div>
+    <label>Mijoz ismi</label><input id="eMijoz" type="text">
+    <label>Telefon</label><input id="eTel" type="tel">
+    <div id="eFilialWrap"><label>Filial</label><select id="eFilial"></select></div>
+    <label>Xizmat nomi</label><input id="eXizmat" type="text">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px">
+      <div><label>Narx</label><input id="eNarx" type="number" inputmode="numeric"></div>
+      <div><label>Soni</label><input id="eSoni" type="number" inputmode="numeric"></div>
+    </div>
+    <label>To'lov turi</label>
+    <div class="seg" id="editPaySeg">
+      <button type="button" data-k="naqd">Naqd</button>
+      <button type="button" data-k="payme">Payme</button>
+      <button type="button" data-k="click">Click</button>
+      <button type="button" data-k="karta">Karta</button>
+    </div>
+    <label>To'langan summa</label><input id="ePaid" type="number" inputmode="numeric">
+    <label>Izoh</label><textarea id="eIzoh"></textarea>
+    <button class="btn" id="btnEditSave" style="margin-bottom:10px">Saqlash</button>
+    <button class="btn btn-ghost" id="btnEditCancel">Bekor qilish</button>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -309,10 +407,12 @@ const SUPABASE_KEY="sb_publishable_xEPsFgv-ACNKeAFJt2MMiA_Q3Vbte4F";
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
 const PAY=[{k:'naqd',l:'Naqd'},{k:'payme',l:'Payme'},{k:'click',l:'Click'},{k:'karta',l:'Karta'}];
-let user=null, services=[], payChoice='naqd', clientsData={};
+let user=null, services=[], filials=[], payChoice='naqd', clientsData={}, dashRows=[];
+let editPay='naqd', editId=null, deferredInstall=null, importData=null;
 
 const $=id=>document.getElementById(id);
 const fmt=n=>(Number(n)||0).toLocaleString('ru-RU');
+function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function msg(el,t,ty){ el.innerHTML=t?`<div class="msg ${ty}">${t}</div>`:""; }
 function save(u){ try{localStorage.setItem('bd_user',JSON.stringify(u));}catch(e){} }
 function load(){ try{return JSON.parse(localStorage.getItem('bd_user')||'null');}catch(e){return null;} }
@@ -324,6 +424,8 @@ function periodStart(p){ const d=new Date();
   if(p==='month'){d.setDate(d.getDate()-30);return d.toISOString();}
   if(p==='year'){return new Date(d.getFullYear(),0,1).toISOString();}
   return null; }
+function dayEnd(dstr){ const d=new Date(dstr); d.setHours(23,59,59,999); return d.toISOString(); }
+function dayStart(dstr){ const d=new Date(dstr); d.setHours(0,0,0,0); return d.toISOString(); }
 function timeStr(iso){ const d=new Date(iso);
   return d.toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit'})+' '+d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}); }
 function payLabel(k){ const p=PAY.find(x=>x.k===k); return p?p.l:'Naqd'; }
@@ -355,6 +457,7 @@ async function enterApp(){
   $('tabs').innerHTML=tabs.map(t=>`<button data-p="${t[0]}"><span class="ic">${t[2]}</span>${t[1]}</button>`).join('');
   $('tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>switchTab(b.dataset.p));
   await loadServices();
+  await loadFilials();
   if(user.rol==='boss') loadXodimSelect();
   switchTab('dash');
 }
@@ -367,14 +470,14 @@ function switchTab(p){
   if(p==='dash') loadDash();
   if(p==='report') loadReport();
   if(p==='clients') loadClients();
-  if(p==='settings'){ renderServiceManage(); loadEmployees(); }
+  if(p==='settings'){ renderServiceManage(); loadEmployees(); renderFilManage(); }
 }
 
-/* ---------- services (picker) ---------- */
+/* ---------- services ---------- */
 async function loadServices(){
   const {data}=await sb.from('xizmat_turlari').select('*').eq('faol',true).order('nom');
   services=data||[];
-  $('svcPick').innerHTML=services.map(s=>`<option value="${s.id}">${s.nom} — ${fmt(s.narx)}</option>`).join('')
+  $('svcPick').innerHTML=services.map(s=>`<option value="${s.id}">${esc(s.nom)} — ${fmt(s.narx)}</option>`).join('')
     +'<option value="__m">Boshqa (qo\'lda)</option>';
   onServicePick();
 }
@@ -386,6 +489,20 @@ function onServicePick(){
 }
 function recalcSumma(){ $('summaView').textContent=fmt((Number($('fNarx').value)||0)*(Number($('fSoni').value)||0)); }
 function setPay(k){ payChoice=k; $('paySeg').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===k)); }
+
+/* ---------- filials ---------- */
+async function loadFilials(){
+  const {data}=await sb.from('filiallar').select('*').eq('faol',true).order('nom');
+  filials=data||[];
+  const opts=filials.map(f=>`<option value="${esc(f.nom)}">${esc(f.nom)}</option>`).join('');
+  $('fFilial').innerHTML=opts||'<option value="">—</option>';
+  $('eFilial').innerHTML='<option value="">—</option>'+opts;
+  document.querySelectorAll('.filialFilter').forEach(sel=>{
+    const cur=sel.value; sel.innerHTML='<option value="">Barcha filial</option>'+opts; sel.value=cur;
+  });
+  $('filialAddWrap').style.display=filials.length?'':'none';
+  document.querySelectorAll('.filialFilter').forEach(s=>s.parentElement.style.display=filials.length?'':'none');
+}
 
 /* ---------- add record ---------- */
 async function addXizmat(){
@@ -401,6 +518,7 @@ async function addXizmat(){
   const {error}=await sb.from('xizmatlar').insert({
     mijoz_nomi:mijoz, telefon:$('fTel').value.trim(), xizmat_nomi:xizmatNom,
     narx, soni, summa, tolangan_summa:paid, tolov_holati:holati, tolov_turi:payChoice,
+    filial:(filials.length?$('fFilial').value:null),
     xodim_id:user.id, xodim_ism:user.ism, izoh:$('fIzoh').value.trim() });
   $('btnAdd').disabled=false;
   if(error){ msg($('addMsg'),'Xatolik: '+error.message,'err'); return; }
@@ -411,25 +529,38 @@ async function addXizmat(){
 }
 
 /* ---------- fetch/sum ---------- */
-async function fetchRows(from,xodimId){
+async function fetchRows(from,to,xodimId,filial){
   let q=sb.from('xizmatlar').select('*').order('sana',{ascending:false}).limit(5000);
-  if(from) q=q.gte('sana',from); if(xodimId) q=q.eq('xodim_id',xodimId);
+  if(from) q=q.gte('sana',from); if(to) q=q.lte('sana',to);
+  if(xodimId) q=q.eq('xodim_id',xodimId); if(filial) q=q.eq('filial',filial);
   const {data}=await q; return data||[];
 }
 function sums(rows){ const s={total:0,paid:0,debt:0,cnt:rows.length,naqd:0,payme:0,click:0,karta:0};
   rows.forEach(r=>{ const t=Number(r.summa)||0,p=Number(r.tolangan_summa)||0;
     s.total+=t; s.paid+=p; s.debt+=(t-p); s[r.tolov_turi||'naqd']+=p; }); return s; }
+function rangeFrom(sel){ const v=sel.value; return v==='oraliq'?null:periodStart(v); }
 
 /* ---------- dashboard ---------- */
 async function loadDash(){
-  const isBoss=user.rol==='boss';
-  const rows=await fetchRows(periodStart(isBoss?$('dashPeriod').value:'today'), isBoss?null:user.id);
-  const s=sums(rows);
-  $('dTotal').textContent=fmt(s.total);$('dPaid').textContent=fmt(s.paid);$('dDebt').textContent=fmt(s.debt);
-  $('dNaqd').textContent=fmt(s.naqd);$('dPayme').textContent=fmt(s.payme);
-  $('dClick').textContent=fmt(s.click);$('dKarta').textContent=fmt(s.karta);
-  $('dCount').textContent=s.cnt;
-  renderList($('dashList'), rows.slice(0,50), isBoss);
+  const isBoss=user.rol==='boss'; const pv=$('dashPeriod').value;
+  $('dashRange').style.display = pv==='oraliq' ? '' : 'none';
+  let from=null,to=null;
+  if(pv==='oraliq'){ from=$('dashFrom').value?dayStart($('dashFrom').value):null; to=$('dashTo').value?dayEnd($('dashTo').value):null; }
+  else from=periodStart(pv);
+  const fil=$('dashFilial').value||null;
+  dashRows=await fetchRows(from,to,isBoss?null:user.id,fil);
+  renderDash();
+}
+function renderDash(){
+  const s=($('dashSearch').value||'').trim().toLowerCase();
+  let rows=dashRows;
+  if(s) rows=rows.filter(r=>(r.mijoz_nomi||'').toLowerCase().includes(s)||(r.xizmat_nomi||'').toLowerCase().includes(s)||(r.telefon||'').toLowerCase().includes(s));
+  const t=sums(rows);
+  $('dTotal').textContent=fmt(t.total);$('dPaid').textContent=fmt(t.paid);$('dDebt').textContent=fmt(t.debt);
+  $('dNaqd').textContent=fmt(t.naqd);$('dPayme').textContent=fmt(t.payme);
+  $('dClick').textContent=fmt(t.click);$('dKarta').textContent=fmt(t.karta);
+  $('dCount').textContent=t.cnt;
+  renderList($('dashList'), rows.slice(0,80), user.rol==='boss');
 }
 
 /* ---------- report: davrlar ---------- */
@@ -446,12 +577,15 @@ function periodKey(iso,type){ const d=new Date(iso);
 function switchReportSub(s){
   $('rpDavrlar').classList.toggle('hidden',s!=='davrlar');
   $('rpXodimlar').classList.toggle('hidden',s!=='xodimlar');
+  $('rpXizmatlar').classList.toggle('hidden',s!=='xizmatlar');
   $('rpSub').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.s===s));
-  if(s==='davrlar') loadReport(); else loadWorkers();
+  if(s==='davrlar') loadReport(); else if(s==='xodimlar') loadWorkers(); else loadServiceReport();
 }
 async function loadReport(){
-  const xid=$('rpXodim').value||null;
-  const rows=await fetchRows(null,xid); const s=sums(rows);
+  const xid=$('rpXodim').value||null, fil=$('rpFilial').value||null;
+  const from=$('rpFrom').value?dayStart($('rpFrom').value):null;
+  const to=$('rpTo').value?dayEnd($('rpTo').value):null;
+  const rows=await fetchRows(from,to,xid,fil); const s=sums(rows);
   $('rNaqd').textContent=fmt(s.naqd);$('rPayme').textContent=fmt(s.payme);
   $('rClick').textContent=fmt(s.click);$('rKarta').textContent=fmt(s.karta);
   const type=$('rpPeriod').value, map={};
@@ -467,12 +601,10 @@ async function loadReport(){
 async function loadXodimSelect(){
   const {data}=await sb.from('xodimlar').select('id,ism,rol').eq('faol',true).order('id');
   const xs=(data||[]).filter(x=>x.rol!=='boss');
-  $('rpXodim').innerHTML='<option value="">Barcha xodim</option>'+xs.map(x=>`<option value="${x.id}">${x.ism}</option>`).join('');
+  $('rpXodim').innerHTML='<option value="">Barcha xodim</option>'+xs.map(x=>`<option value="${x.id}">${esc(x.ism)}</option>`).join('');
 }
-
-/* ---------- report: xodimlar share ---------- */
 async function loadWorkers(){
-  const rows=await fetchRows(periodStart($('wkPeriod').value),null);
+  const rows=await fetchRows(periodStart($('wkPeriod').value),null,null,null);
   const map={};
   rows.forEach(r=>{ const id=r.xodim_id||0, k=r.xodim_ism||'—';
     if(!map[id]) map[id]={ism:k,cnt:0,paid:0,debt:0,naqd:0,payme:0,click:0,karta:0};
@@ -481,7 +613,7 @@ async function loadWorkers(){
   const arr=Object.values(map).sort((a,b)=>b.paid-a.paid);
   const totalPaid=arr.reduce((s,m)=>s+m.paid,0)||1;
   $('workersWrap').innerHTML=arr.length?arr.map(m=>{ const pct=Math.round(m.paid/totalPaid*100);
-    return `<div class="wcard"><div class="wtop"><div class="wname">${m.ism}</div><div class="share">${pct}%</div></div>
+    return `<div class="wcard"><div class="wtop"><div class="wname">${esc(m.ism)}</div><div class="share">${pct}%</div></div>
       <div class="bar"><i style="width:${pct}%"></i></div>
       <div class="wgrid">
         <div class="b"><div class="k">Soni</div><div class="v num">${m.cnt}</div></div>
@@ -494,19 +626,29 @@ async function loadWorkers(){
         <div class="b"><div class="k">Ulush</div><div class="v num">${pct}%</div></div>
       </div></div>`; }).join('') : '<div class="empty">Bu davrda yozuv yo\'q</div>';
 }
+async function loadServiceReport(){
+  const rows=await fetchRows(periodStart($('svPeriod').value),null,null,null);
+  const map={};
+  rows.forEach(r=>{ const k=r.xizmat_nomi||'—';
+    if(!map[k]) map[k]={soni:0,paid:0};
+    map[k].soni+=Number(r.soni)||1; map[k].paid+=Number(r.tolangan_summa)||0; });
+  const arr=Object.entries(map).map(([k,v])=>({nom:k,...v})).sort((a,b)=>b.paid-a.paid);
+  $('svcReportBody').innerHTML=arr.length?arr.map(m=>
+    `<tr><td>${esc(m.nom)}</td><td class="num">${m.soni}</td><td class="num">${fmt(m.paid)}</td></tr>`).join('')
+    :'<tr><td colspan="3" style="text-align:center;color:var(--muted)">Ma\'lumot yo\'q</td></tr>';
+}
 
-/* ---------- clients (customer base + debts) ---------- */
+/* ---------- clients ---------- */
 let clFilter='all';
 async function loadClients(){
-  const rows=await fetchRows(null,null);
+  const rows=await fetchRows(null,null,null,null);
   const map={};
   rows.forEach(r=>{ const key=(r.telefon&&r.telefon.trim())?('t:'+r.telefon.trim()):('n:'+(r.mijoz_nomi||'').toLowerCase());
     if(!map[key]) map[key]={ism:r.mijoz_nomi||'—',tel:r.telefon||'',cnt:0,total:0,paid:0,debt:0,rows:[]};
     const m=map[key],t=Number(r.summa)||0,p=Number(r.tolangan_summa)||0;
     if(!m.tel&&r.telefon) m.tel=r.telefon; if(m.ism==='—'&&r.mijoz_nomi) m.ism=r.mijoz_nomi;
     m.cnt++; m.total+=t; m.paid+=p; m.debt+=(t-p); m.rows.push(r); });
-  clientsData=map;
-  renderClients();
+  clientsData=map; renderClients();
 }
 function renderClients(){
   const s=($('clSearch').value||'').trim().toLowerCase();
@@ -518,11 +660,11 @@ function renderClients(){
   $('clDebt').textContent=fmt(arr.reduce((x,m)=>x+m.debt,0));
   $('clPaid').textContent=fmt(arr.reduce((x,m)=>x+m.paid,0));
   $('clientsWrap').innerHTML=arr.length?arr.map((m,i)=>{
-    const tel=m.tel?`<a class="call" href="tel:${m.tel}">${m.tel}</a>`:'—';
+    const tel=m.tel?`<a class="call" href="tel:${esc(m.tel)}">${esc(m.tel)}</a>`:'—';
     const dbadge=m.debt>0?`<div class="share d">Qarz ${fmt(m.debt)}</div>`:`<div class="share">To'liq</div>`;
     return `<div class="wcard">
       <div class="clhead" onclick="toggleClient(this)">
-        <div class="wtop"><div><div class="wname">${m.ism}</div><div class="wsub">${tel}</div></div>${dbadge}</div>
+        <div class="wtop"><div><div class="wname">${esc(m.ism)}</div><div class="wsub">${tel}</div></div>${dbadge}</div>
         <div class="wgrid" style="grid-template-columns:1fr 1fr 1fr">
           <div class="b"><div class="k">Yozuv</div><div class="v num">${m.cnt}</div></div>
           <div class="b"><div class="k">Tushum</div><div class="v num" style="color:var(--paid)">${fmt(m.paid)}</div></div>
@@ -531,30 +673,25 @@ function renderClients(){
       </div>
       <div class="cl-recs hidden" data-i="${i}"></div></div>`;
   }).join('') : '<div class="empty">Mijoz topilmadi</div>';
-  // stash filtered array for expansion
   $('clientsWrap')._arr=arr;
 }
 function toggleClient(head){
   const recs=head.nextElementSibling;
-  const open=!recs.classList.contains('hidden');
-  if(open){ recs.classList.add('hidden'); return; }
+  if(!recs.classList.contains('hidden')){ recs.classList.add('hidden'); return; }
   recs.classList.remove('hidden');
-  if(!recs.dataset.done){
-    const arr=$('clientsWrap')._arr, m=arr[Number(recs.dataset.i)];
-    renderList(recs, m.rows, user.rol==='boss'); recs.dataset.done='1';
-  }
+  if(!recs.dataset.done){ const m=$('clientsWrap')._arr[Number(recs.dataset.i)];
+    renderList(recs, m.rows, user.rol==='boss'); recs.dataset.done='1'; }
 }
 function setClFilter(f){ clFilter=f; $('clSub').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.f===f)); renderClients(); }
 
-/* ---------- employee management ---------- */
+/* ---------- employees ---------- */
 async function loadEmployees(){
   if(user.rol!=='boss'){ $('empList').innerHTML=''; return; }
   const {data}=await sb.from('xodimlar').select('*').eq('faol',true).order('id');
-  const emps=data||[];
-  $('empList').innerHTML=emps.map(e=>
+  $('empList').innerHTML=(data||[]).map(e=>
     `<div class="rec"><div class="top"><div>
-      <div class="name">${e.ism} ${e.rol==='boss'?'• Boshliq':''}</div>
-      <div class="svc">login: ${e.login} · parol: ${e.parol}</div></div></div>
+      <div class="name">${esc(e.ism)} ${e.rol==='boss'?'• Boshliq':''}</div>
+      <div class="svc">login: ${esc(e.login)} · parol: ${esc(e.parol)}</div></div></div>
       <div class="actions">
         <button class="btn btn-sm btn-ghost" onclick="renameEmp(${e.id})">Ism</button>
         <button class="btn btn-sm btn-ghost" onclick="passEmp(${e.id})">Parol</button>
@@ -565,7 +702,7 @@ async function addEmployee(){
   const ism=$('neIsm').value.trim(), login=$('neLogin').value.trim(), parol=($('neParol').value.trim()||'1234');
   if(!ism||!login){ msg($('empMsg'),'Ism va login kiriting','err'); return; }
   const {error}=await sb.from('xodimlar').insert({ism,login,parol,rol:'xodim'});
-  if(error){ msg($('empMsg'), error.message.includes('duplicate')?'Bu login band':'Xatolik: '+error.message,'err'); return; }
+  if(error){ msg($('empMsg'), (error.message||'').includes('duplicate')?'Bu login band':'Xatolik: '+error.message,'err'); return; }
   $('neIsm').value='';$('neLogin').value='';$('neParol').value='';
   msg($('empMsg'),'Qo\'shildi ✓','ok'); setTimeout(()=>msg($('empMsg'),'',''),2000);
   loadEmployees(); loadXodimSelect();
@@ -580,11 +717,34 @@ async function delEmp(id){ if(!confirm('Bu xodim o\'chirilsinmi?')) return;
   const {error}=await sb.from('xodimlar').update({faol:false}).eq('id',id);
   if(error){ alert('Xatolik: '+error.message); return; } loadEmployees(); loadXodimSelect(); }
 
-/* ---------- service management ---------- */
+/* ---------- filial management ---------- */
+function renderFilManage(){
+  $('filList').innerHTML=filials.length?filials.map(f=>
+    `<div class="rec"><div class="top"><div><div class="name">${esc(f.nom)}</div></div></div>
+      <div class="actions">
+        <button class="btn btn-sm btn-ghost" onclick="renameFil(${f.id})">Nomi</button>
+        <button class="btn btn-sm btn-danger" onclick="delFil(${f.id})">O'chirish</button>
+      </div></div>`).join('') : '<div class="empty">Filial yo\'q. Bittasi bo\'lmasa, filial tanlash chiqmaydi.</div>';
+}
+async function addFilial(){
+  const nom=$('nfName').value.trim(); if(!nom){ msg($('filMsg'),'Nom kiriting','err'); return; }
+  const {error}=await sb.from('filiallar').insert({nom});
+  if(error){ msg($('filMsg'),'Xatolik: '+error.message,'err'); return; }
+  $('nfName').value=''; msg($('filMsg'),'Qo\'shildi ✓','ok'); setTimeout(()=>msg($('filMsg'),'',''),2000);
+  await loadFilials(); renderFilManage();
+}
+async function renameFil(id){ const v=prompt('Yangi filial nomi:'); if(!v) return;
+  const {error}=await sb.from('filiallar').update({nom:v.trim()}).eq('id',id);
+  if(error){ alert('Xatolik: '+error.message); return; } await loadFilials(); renderFilManage(); }
+async function delFil(id){ if(!confirm('Bu filial o\'chirilsinmi?')) return;
+  const {error}=await sb.from('filiallar').update({faol:false}).eq('id',id);
+  if(error){ alert('Xatolik: '+error.message); return; } await loadFilials(); renderFilManage(); }
+
+/* ---------- services management ---------- */
 function renderServiceManage(){
   $('svcList').innerHTML=services.length?services.map(s=>
     `<div class="rec"><div class="top"><div>
-      <div class="name">${s.nom}</div><div class="svc num">${fmt(s.narx)} so'm</div></div></div>
+      <div class="name">${esc(s.nom)}</div><div class="svc num">${fmt(s.narx)} so'm</div></div></div>
       <div class="actions">
         <button class="btn btn-sm btn-ghost" onclick="editSvcPrice(${s.id})">Narx</button>
         <button class="btn btn-sm btn-danger" onclick="delSvc(${s.id})">O'chirish</button>
@@ -613,10 +773,10 @@ function saveExcel(name,aoa,sheet){
   XLSX.utils.book_append_sheet(wb,ws,sheet||'Hisobot'); XLSX.writeFile(wb,name);
 }
 async function exportRecords(){
-  const rows=await fetchRows(null,null);
-  const aoa=[['Sana','Mijoz','Telefon','Xizmat','Soni','Summa','To\'langan','Qarz','To\'lov turi','Xodim']];
+  const rows=await fetchRows(null,null,null,null);
+  const aoa=[['Sana','Mijoz','Telefon','Filial','Xizmat','Soni','Summa','To\'langan','Qarz','To\'lov turi','Xodim']];
   rows.forEach(r=>{ const s=Number(r.summa)||0,p=Number(r.tolangan_summa)||0;
-    aoa.push([new Date(r.sana).toLocaleString('ru-RU'),r.mijoz_nomi||'',r.telefon||'',r.xizmat_nomi||'',
+    aoa.push([new Date(r.sana).toLocaleString('ru-RU'),r.mijoz_nomi||'',r.telefon||'',r.filial||'',r.xizmat_nomi||'',
       Number(r.soni)||1,s,p,s-p,payLabel(r.tolov_turi||'naqd'),r.xodim_ism||'']); });
   saveExcel('birdarcha_yozuvlar.xlsx',aoa,'Yozuvlar');
 }
@@ -627,24 +787,84 @@ function exportClients(){
   saveExcel('birdarcha_mijozlar.xlsx',aoa,'Mijozlar');
 }
 
-/* ---------- record list + pay debt ---------- */
+/* ---------- excel debt import ---------- */
+function onImportFile(ev){
+  const f=ev.target.files[0]; if(!f) return;
+  const rd=new FileReader();
+  rd.onload=e=>{
+    try{
+      const wb=XLSX.read(new Uint8Array(e.target.result),{type:'array'});
+      const ws=wb.Sheets[wb.SheetNames[0]];
+      const aoa=XLSX.utils.sheet_to_json(ws,{header:1,blankrows:false});
+      if(!aoa.length){ msg($('impMsg'),'Fayl bo\'sh','err'); return; }
+      const headers=aoa[0].map((h,i)=>h!=null&&h!==''?String(h):('Ustun '+(i+1)));
+      importData={headers, rows:aoa.slice(1)};
+      const opt=headers.map((h,i)=>`<option value="${i}">${esc(h)}</option>`).join('');
+      $('mapIsm').innerHTML=opt; $('mapTel').innerHTML=opt; $('mapQarz').innerHTML=opt;
+      // guess columns
+      const gi=(kw)=>{ const i=headers.findIndex(h=>String(h).toLowerCase().includes(kw)); return i>=0?i:0; };
+      $('mapIsm').value=gi('ism')||gi('mijoz')||gi('nom')||0;
+      $('mapTel').value=gi('tel')||gi('phone')||gi('raqam');
+      $('mapQarz').value=gi('qarz')||gi('summa')||gi('dolg')||gi('balan');
+      $('impN').textContent=importData.rows.length;
+      $('impMap').classList.remove('hidden');
+      msg($('impMsg'),'Fayl o\'qildi. Ustunlarni tekshiring va import qiling.','ok');
+    }catch(err){ msg($('impMsg'),'Xatolik: '+err.message,'err'); }
+  };
+  rd.readAsArrayBuffer(f);
+}
+async function doImport(){
+  if(!importData){ return; }
+  const ci=Number($('mapIsm').value), ct=Number($('mapTel').value), cq=Number($('mapQarz').value);
+  const recs=[];
+  importData.rows.forEach(r=>{
+    const ism=(r[ci]!=null?String(r[ci]).trim():''); 
+    let qarz=r[cq]; if(typeof qarz==='string') qarz=Number(qarz.replace(/[^\d.-]/g,''));
+    qarz=Number(qarz)||0;
+    if(!ism||qarz<=0) return;
+    recs.push({ mijoz_nomi:ism, telefon:(r[ct]!=null?String(r[ct]).trim():''), xizmat_nomi:'Import (qarz)',
+      narx:qarz, soni:1, summa:qarz, tolangan_summa:0, tolov_holati:'qarz', tolov_turi:'naqd',
+      filial:null, xodim_id:user.id, xodim_ism:user.ism, izoh:'Excel import' });
+  });
+  if(!recs.length){ msg($('impMsg'),'Import uchun mos qator topilmadi','err'); return; }
+  if(!confirm(recs.length+' ta qarz yozuvi import qilinsinmi?')) return;
+  $('btnImport').disabled=true;
+  let ok=0;
+  for(let i=0;i<recs.length;i+=200){
+    const {error}=await sb.from('xizmatlar').insert(recs.slice(i,i+200));
+    if(error){ msg($('impMsg'),'Xatolik: '+error.message,'err'); $('btnImport').disabled=false; return; }
+    ok+=recs.slice(i,i+200).length;
+  }
+  $('btnImport').disabled=false;
+  msg($('impMsg'),ok+' ta qarz import qilindi ✓','ok');
+  $('impFile').value=''; $('impMap').classList.add('hidden'); importData=null;
+}
+
+/* ---------- record list ---------- */
 function renderList(el,rows,showXodim){
   if(!rows.length){ el.innerHTML='<div class="empty">Yozuv yo\'q</div>'; return; }
   el.innerHTML=rows.map(r=>{
     const summa=Number(r.summa)||0,paid=Number(r.tolangan_summa)||0,qarz=summa-paid,isDebt=qarz>0;
-    const tur=r.tolov_turi||'naqd', tel=r.telefon?`<a class="call" href="tel:${r.telefon}">${r.telefon}</a>`:'';
-    const payBtn=isDebt?`<button class="btn btn-sm btn-ghost" onclick="payDebt(${r.id},${qarz})">To'lov qo'shish</button>`:'';
+    const tur=r.tolov_turi||'naqd', tel=r.telefon?`<a class="call" href="tel:${esc(r.telefon)}">${esc(r.telefon)}</a>`:'';
+    const canEdit=user.rol==='boss'||r.xodim_id===user.id;
+    const payBtn=isDebt?`<button class="btn btn-sm btn-ghost" onclick="payDebt(${r.id},${qarz})">To'lov</button>`:'';
+    const editBtn=canEdit?`<button class="btn btn-sm btn-ghost" onclick="editRecord(${r.id})">Tahrir</button>`:'';
+    const delBtn=canEdit?`<button class="btn btn-sm btn-danger" onclick="deleteRecord(${r.id})">O'chirish</button>`:'';
     const soniTxt=(Number(r.soni)||1)>1?` ×${r.soni}`:'';
+    const filTag=r.filial?`<span class="tag fil">${esc(r.filial)}</span>`:'';
+    const acts=[payBtn,editBtn,delBtn].filter(Boolean).join('');
     return `<div class="rec"><div class="top">
-      <div><div class="name">${r.mijoz_nomi||''}</div><div class="svc">${r.xizmat_nomi||''}${soniTxt}</div></div>
+      <div><div class="name">${esc(r.mijoz_nomi)}</div><div class="svc">${esc(r.xizmat_nomi)}${soniTxt}</div></div>
       <div style="text-align:right"><div class="sum num">${fmt(summa)}</div>
         <span class="pill ${isDebt?'debt':'paid'}">${isDebt?('Qarz '+fmt(qarz)):'To\'landi'}</span></div></div>
-      <div class="meta"><span class="tag ${tur}">${payLabel(tur)}</span>${tel}
-        ${showXodim?('<span>'+(r.xodim_ism||'')+'</span>'):''}<span>${timeStr(r.sana)}</span>
-        ${r.izoh?('<span>'+r.izoh+'</span>'):''}</div>
-      ${payBtn?('<div class="actions">'+payBtn+'</div>'):''}</div>`;
+      <div class="meta"><span class="tag ${tur}">${payLabel(tur)}</span>${filTag}${tel}
+        ${showXodim?('<span>'+esc(r.xodim_ism)+'</span>'):''}<span>${timeStr(r.sana)}</span>
+        ${r.izoh?('<span>'+esc(r.izoh)+'</span>'):''}</div>
+      ${acts?('<div class="actions">'+acts+'</div>'):''}</div>`;
   }).join('');
 }
+function refreshCurrent(){ const cur=$('tabs').querySelector('button.on'); if(cur) switchTab(cur.dataset.p); }
+
 async function payDebt(id,qarz){
   const inp=prompt('To\'lov summasi (qolgan qarz: '+fmt(qarz)+')',qarz); if(inp===null) return;
   const add=Number(inp)||0; if(add<=0) return;
@@ -654,7 +874,42 @@ async function payDebt(id,qarz){
   if(paid>summa) paid=summa; const holati=paid>=summa?'tolangan':'qarz';
   const {error}=await sb.from('xizmatlar').update({tolangan_summa:paid,tolov_holati:holati}).eq('id',id);
   if(error){ alert('Xatolik: '+error.message); return; }
-  const cur=$('tabs').querySelector('button.on'); if(cur) switchTab(cur.dataset.p);
+  refreshCurrent();
+}
+async function deleteRecord(id){
+  if(!confirm('Bu yozuv o\'chirilsinmi?')) return;
+  const {error}=await sb.from('xizmatlar').delete().eq('id',id);
+  if(error){ alert('Xatolik: '+error.message); return; }
+  refreshCurrent();
+}
+
+/* ---------- edit modal ---------- */
+async function editRecord(id){
+  const {data}=await sb.from('xizmatlar').select('*').eq('id',id).limit(1);
+  if(!data||!data.length) return;
+  const r=data[0]; editId=id;
+  $('eMijoz').value=r.mijoz_nomi||''; $('eTel').value=r.telefon||'';
+  $('eXizmat').value=r.xizmat_nomi||''; $('eNarx').value=Number(r.narx)||Number(r.summa)||0;
+  $('eSoni').value=Number(r.soni)||1; $('ePaid').value=Number(r.tolangan_summa)||0;
+  $('eIzoh').value=r.izoh||'';
+  $('eFilialWrap').style.display=filials.length?'':'none';
+  $('eFilial').value=r.filial||'';
+  setEditPay(r.tolov_turi||'naqd');
+  msg($('editMsg'),'','');
+  $('editModal').classList.remove('hidden');
+}
+function setEditPay(k){ editPay=k; $('editPaySeg').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===k)); }
+async function saveEdit(){
+  const narx=Number($('eNarx').value)||0, soni=Number($('eSoni').value)||0, summa=narx*soni;
+  let paid=Number($('ePaid').value)||0; if(paid>summa) paid=summa;
+  const holati=paid>=summa?'tolangan':'qarz';
+  const {error}=await sb.from('xizmatlar').update({
+    mijoz_nomi:$('eMijoz').value.trim(), telefon:$('eTel').value.trim(), xizmat_nomi:$('eXizmat').value.trim(),
+    narx, soni, summa, tolangan_summa:paid, tolov_holati:holati, tolov_turi:editPay,
+    filial:(filials.length?$('eFilial').value:null), izoh:$('eIzoh').value.trim()
+  }).eq('id',editId);
+  if(error){ msg($('editMsg'),'Xatolik: '+error.message,'err'); return; }
+  $('editModal').classList.add('hidden'); refreshCurrent();
 }
 
 /* ---------- events ---------- */
@@ -668,16 +923,37 @@ $('fSoni').addEventListener('input',recalcSumma);
 $('fFullPaid').addEventListener('change',e=>$('paidWrap').classList.toggle('hidden',e.target.checked));
 $('paySeg').querySelectorAll('button').forEach(b=>b.onclick=()=>setPay(b.dataset.k));
 $('dashPeriod').addEventListener('change',loadDash);
+$('dashFilial').addEventListener('change',loadDash);
+$('dashFrom').addEventListener('change',loadDash);
+$('dashTo').addEventListener('change',loadDash);
+$('dashSearch').addEventListener('input',()=>{clearTimeout(window._d);window._d=setTimeout(renderDash,200);});
 $('rpSub').querySelectorAll('button').forEach(b=>b.onclick=()=>switchReportSub(b.dataset.s));
 $('rpPeriod').addEventListener('change',loadReport);
 $('rpXodim').addEventListener('change',loadReport);
+$('rpFilial').addEventListener('change',loadReport);
+$('rpFrom').addEventListener('change',loadReport);
+$('rpTo').addEventListener('change',loadReport);
 $('wkPeriod').addEventListener('change',loadWorkers);
+$('svPeriod').addEventListener('change',loadServiceReport);
 $('clSub').querySelectorAll('button').forEach(b=>b.onclick=()=>setClFilter(b.dataset.f));
 $('clSearch').addEventListener('input',()=>{clearTimeout(window._c);window._c=setTimeout(renderClients,250);});
 $('btnAddEmp').onclick=addEmployee;
+$('btnAddFil').onclick=addFilial;
 $('btnAddSvc').onclick=addService;
 $('btnExcelRep').onclick=exportRecords;
 $('btnExcelCl').onclick=exportClients;
+$('impFile').addEventListener('change',onImportFile);
+$('btnImport').onclick=doImport;
+$('editPaySeg').querySelectorAll('button').forEach(b=>b.onclick=()=>setEditPay(b.dataset.k));
+$('btnEditSave').onclick=saveEdit;
+$('btnEditCancel').onclick=()=>$('editModal').classList.add('hidden');
+$('editModal').addEventListener('click',e=>{ if(e.target===$('editModal')) $('editModal').classList.add('hidden'); });
+
+/* ---------- PWA ---------- */
+/* single-file rejim */
+/* beforeinstallprompt: manifestsiz rejimda o'chirildi */
+$('btnInstall').onclick=async()=>{ if(!deferredInstall) return; deferredInstall.prompt();
+  await deferredInstall.userChoice; deferredInstall=null; $('installHint').classList.add('hidden'); };
 
 /* ---------- auto login ---------- */
 (function(){ const s=load(); if(s&&s.id){ user=s; enterApp(); } })();
