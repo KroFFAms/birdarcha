@@ -9,34 +9,27 @@
     --bg:#eef1f4; --card:#ffffff; --ink:#1b2733; --muted:#6b7784;
     --line:#e2e7ec; --accent:#0f766e; --accent-2:#0b5d56;
     --paid:#166534; --paid-bg:#dcfce7; --debt:#b91c1c; --debt-bg:#fee2e2;
+    --naqd:#0f766e; --payme:#00b8d4; --click:#2962ff; --karta:#7c3aed;
     --shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);
     --radius:14px;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.4;
-    padding-bottom:env(safe-area-inset-bottom);
-  }
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.4;}
   .hidden{display:none!important}
   .num{font-variant-numeric:tabular-nums}
 
-  /* Header */
-  header{
-    background:var(--accent); color:#fff; padding:14px 16px;
+  header{background:var(--accent); color:#fff; padding:14px 16px;
     display:flex; align-items:center; justify-content:space-between;
-    position:sticky; top:0; z-index:10;
-    padding-top:calc(14px + env(safe-area-inset-top));
-  }
+    position:sticky; top:0; z-index:10; padding-top:calc(14px + env(safe-area-inset-top));}
   header .title{font-weight:700; font-size:17px}
   header .who{font-size:12px; opacity:.85}
-  header .ver{font-size:11px; opacity:.7}
+  header .ver{font-size:11px; opacity:.7; text-align:right}
   .btn-out{background:rgba(255,255,255,.15); color:#fff; border:0; padding:8px 12px; border-radius:10px; font-size:13px; font-weight:600}
 
-  .wrap{max-width:620px; margin:0 auto; padding:16px}
+  .wrap{max-width:640px; margin:0 auto; padding:16px 16px 92px;}
 
-  /* Login */
   .login-box{max-width:380px; margin:8vh auto; padding:0 16px}
   .brand{text-align:center; margin-bottom:22px}
   .brand h1{margin:0; font-size:22px; letter-spacing:.5px}
@@ -45,22 +38,17 @@
   .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px; margin-bottom:14px}
 
   label{display:block; font-size:13px; font-weight:600; color:var(--muted); margin:0 0 6px}
-  input,select,textarea{
-    width:100%; padding:12px 14px; font-size:16px; color:var(--ink);
-    border:1px solid var(--line); border-radius:10px; background:#fbfcfd; margin-bottom:12px;
-    font-family:inherit;
-  }
+  input,select,textarea{width:100%; padding:12px 14px; font-size:16px; color:var(--ink);
+    border:1px solid var(--line); border-radius:10px; background:#fbfcfd; margin-bottom:12px; font-family:inherit;}
   input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); border-color:var(--accent)}
-  textarea{min-height:60px; resize:vertical}
+  textarea{min-height:56px; resize:vertical}
 
-  .btn{
-    width:100%; padding:14px; font-size:16px; font-weight:700; color:#fff;
-    background:var(--accent); border:0; border-radius:12px; cursor:pointer;
-  }
+  .btn{width:100%; padding:14px; font-size:16px; font-weight:700; color:#fff; background:var(--accent); border:0; border-radius:12px; cursor:pointer;}
   .btn:active{background:var(--accent-2)}
   .btn:disabled{opacity:.6}
   .btn-sm{width:auto; padding:9px 14px; font-size:14px; border-radius:10px}
   .btn-ghost{background:#fff; color:var(--accent); border:1px solid var(--accent)}
+  .btn-danger{background:#fff; color:var(--debt); border:1px solid var(--debt)}
 
   .switch-row{display:flex; align-items:center; gap:10px; margin-bottom:12px}
   .switch-row input{width:auto; margin:0}
@@ -70,405 +58,629 @@
   .msg.err{background:var(--debt-bg); color:var(--debt)}
   .msg.ok{background:var(--paid-bg); color:var(--paid)}
 
-  /* Totals cards */
-  .totals{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:14px}
-  .tcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 10px; text-align:center; box-shadow:var(--shadow)}
-  .tcard .lbl{font-size:11px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.3px}
-  .tcard .val{font-size:17px; font-weight:800; margin-top:4px}
-  .tcard.paid .val{color:var(--paid)}
-  .tcard.debt .val{color:var(--debt)}
+  .seg{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:12px}
+  .seg button{padding:11px 4px; border:1px solid var(--line); background:#fbfcfd; border-radius:10px; font-size:14px; font-weight:700; color:var(--muted); cursor:pointer}
+  .seg button.on{background:var(--accent); color:#fff; border-color:var(--accent)}
+  .seg2{grid-template-columns:1fr 1fr}
 
-  /* Filters */
+  .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px}
+  .grid4{display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; margin-bottom:12px}
+  .tcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 8px; text-align:center; box-shadow:var(--shadow)}
+  .tcard .lbl{font-size:11px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.3px}
+  .tcard .val{font-size:16px; font-weight:800; margin-top:4px}
+  .tcard.paid .val{color:var(--paid)} .tcard.debt .val{color:var(--debt)}
+  .tcard.naqd .val{color:var(--naqd)} .tcard.payme .val{color:var(--payme)}
+  .tcard.click .val{color:var(--click)} .tcard.karta .val{color:var(--karta)}
+
   .filters{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap}
-  .filters select,.filters input{margin:0; flex:1; min-width:120px}
+  .filters select,.filters input{margin:0; flex:1; min-width:110px}
 
-  /* Record item */
   .rec{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:10px; box-shadow:var(--shadow)}
   .rec .top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px}
   .rec .name{font-weight:700}
   .rec .svc{color:var(--muted); font-size:14px; margin-top:2px}
-  .rec .meta{color:var(--muted); font-size:12px; margin-top:6px; display:flex; gap:10px; flex-wrap:wrap}
+  .rec .meta{color:var(--muted); font-size:12px; margin-top:6px; display:flex; gap:10px; flex-wrap:wrap; align-items:center}
   .rec .sum{font-weight:800; font-size:16px; white-space:nowrap}
-  .pill{display:inline-block; font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px; margin-top:6px}
+  .pill{display:inline-block; font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px}
   .pill.paid{background:var(--paid-bg); color:var(--paid)}
   .pill.debt{background:var(--debt-bg); color:var(--debt)}
-  .rec .actions{margin-top:10px; display:flex; gap:8px}
+  .tag{font-size:11px; font-weight:700; padding:2px 7px; border-radius:6px; color:#fff}
+  .tag.naqd{background:var(--naqd)} .tag.payme{background:var(--payme)}
+  .tag.click{background:var(--click)} .tag.karta{background:var(--karta)}
+  .rec .actions{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
 
   .section-title{font-size:13px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; margin:18px 0 8px}
   .empty{text-align:center; color:var(--muted); font-size:14px; padding:24px 8px}
 
-  /* worker summary table */
   table{width:100%; border-collapse:collapse; font-size:14px}
   th,td{padding:8px 6px; text-align:right; border-bottom:1px solid var(--line)}
   th:first-child,td:first-child{text-align:left}
   th{font-size:12px; color:var(--muted); font-weight:700}
-
   .call{color:var(--accent); text-decoration:none; font-weight:600}
+
+  .wcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:10px; box-shadow:var(--shadow)}
+  .wtop{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px}
+  .wname{font-weight:800; font-size:16px}
+  .wsub{font-size:12px; color:var(--muted)}
+  .share{font-size:13px; font-weight:800; color:#fff; background:var(--accent); padding:3px 10px; border-radius:999px}
+  .share.d{background:var(--debt)}
+  .bar{height:8px; background:var(--line); border-radius:999px; overflow:hidden; margin:8px 0 12px}
+  .bar > i{display:block; height:100%; background:var(--accent)}
+  .wgrid{display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; text-align:center}
+  .wgrid .b{background:#f7f9fa; border-radius:8px; padding:8px 4px}
+  .wgrid .b .k{font-size:10px; color:var(--muted); font-weight:700; text-transform:uppercase}
+  .wgrid .b .v{font-size:14px; font-weight:800; margin-top:2px}
+  .clhead{cursor:pointer}
+  .cl-recs{margin-top:12px}
+
+  nav.tabs{position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1px solid var(--line);
+    display:flex; z-index:20; padding-bottom:env(safe-area-inset-bottom); box-shadow:0 -1px 6px rgba(16,24,40,.05)}
+  nav.tabs button{flex:1; background:none; border:0; padding:9px 2px 8px; font-size:11px; font-weight:600; color:var(--muted); cursor:pointer}
+  nav.tabs button .ic{display:block; font-size:19px; line-height:1.1; margin-bottom:2px}
+  nav.tabs button.on{color:var(--accent)}
 </style>
 </head>
 <body>
 
-<!-- ============ LOGIN ============ -->
+<!-- ===== LOGIN ===== -->
 <div id="loginView">
   <div class="login-box">
-    <div class="brand">
-      <h1>BIR DARCHA</h1>
-      <p>Xizmat ko'rsatish tizimi</p>
-    </div>
+    <div class="brand"><h1>BIR DARCHA</h1><p>Xizmat ko'rsatish tizimi</p></div>
     <div class="card">
       <div id="loginMsg"></div>
       <label>Login</label>
       <input id="inLogin" type="text" autocapitalize="off" autocomplete="username" placeholder="masalan: xodim1">
       <label>Parol</label>
-      <input id="inParol" type="password" autocomplete="current-password" placeholder="parol">
+      <input id="inParol" type="password" autocomplete="current-password" placeholder="1234">
       <button class="btn" id="btnLogin">Kirish</button>
     </div>
   </div>
 </div>
 
-<!-- ============ APP ============ -->
+<!-- ===== APP ===== -->
 <div id="appView" class="hidden">
   <header>
-    <div>
-      <div class="title">Bir Darcha</div>
-      <div class="who" id="whoAmI"></div>
-    </div>
-    <div style="text-align:right">
-      <button class="btn-out" id="btnLogout">Chiqish</button>
-      <div class="ver">v2</div>
-    </div>
+    <div><div class="title" id="viewTitle">Bosh sahifa</div><div class="who" id="whoAmI"></div></div>
+    <div><button class="btn-out" id="btnLogout">Chiqish</button><div class="ver">v4</div></div>
   </header>
 
   <div class="wrap">
 
-    <!-- ---- XODIM: yangi xizmat ---- -->
-    <div id="addBlock" class="card">
-      <div id="addMsg"></div>
-      <label>Mijoz ismi</label>
-      <input id="fMijoz" type="text" placeholder="Ism familiya">
-      <label>Telefon raqami</label>
-      <input id="fTel" type="tel" inputmode="tel" placeholder="+998 __ ___ __ __">
-      <label>Xizmat nomi</label>
-      <input id="fXizmat" type="text" placeholder="Ko'rsatilgan xizmat">
-      <label>Summa (so'm)</label>
-      <input id="fSumma" type="number" inputmode="numeric" min="0" placeholder="0">
-
-      <div class="switch-row">
-        <input id="fFullPaid" type="checkbox" checked>
-        <label for="fFullPaid">To'liq to'landi</label>
-      </div>
-      <div id="paidWrap" class="hidden">
-        <label>To'langan summa (qolgani qarz)</label>
-        <input id="fPaid" type="number" inputmode="numeric" min="0" placeholder="0">
-      </div>
-
-      <label>Izoh (ixtiyoriy)</label>
-      <textarea id="fIzoh" placeholder="Qo'shimcha izoh"></textarea>
-      <button class="btn" id="btnAdd">Saqlash</button>
-    </div>
-
-    <!-- ---- BOSS: totals + filters ---- -->
-    <div id="bossBlock" class="hidden">
-      <div class="totals">
-        <div class="tcard"><div class="lbl">Jami</div><div class="val num" id="tTotal">0</div></div>
-        <div class="tcard paid"><div class="lbl">To'langan</div><div class="val num" id="tPaid">0</div></div>
-        <div class="tcard debt"><div class="lbl">Qarz</div><div class="val num" id="tDebt">0</div></div>
-      </div>
+    <!-- DASHBOARD -->
+    <div id="pgDash" class="page">
       <div class="filters">
-        <select id="fltPeriod">
-          <option value="kun">Kunlik</option>
-          <option value="hafta">Haftalik</option>
-          <option value="oy" selected>Oylik</option>
-          <option value="yil">Yillik</option>
+        <select id="dashPeriod">
+          <option value="today" selected>Bugun</option>
+          <option value="week">7 kun</option>
+          <option value="month">30 kun</option>
+          <option value="year">Bu yil</option>
         </select>
-        <select id="fltXodim"><option value="">Barcha xodim</option></select>
       </div>
-      <div class="filters">
-        <input id="fltSearch" type="text" placeholder="Mijoz / telefon / xizmat izlash">
+      <div class="grid3">
+        <div class="tcard"><div class="lbl">Jami</div><div class="val num" id="dTotal">0</div></div>
+        <div class="tcard paid"><div class="lbl">Tushum</div><div class="val num" id="dPaid">0</div></div>
+        <div class="tcard debt"><div class="lbl">Qarz</div><div class="val num" id="dDebt">0</div></div>
       </div>
+      <div class="grid4">
+        <div class="tcard naqd"><div class="lbl">Naqd</div><div class="val num" id="dNaqd">0</div></div>
+        <div class="tcard payme"><div class="lbl">Payme</div><div class="val num" id="dPayme">0</div></div>
+        <div class="tcard click"><div class="lbl">Click</div><div class="val num" id="dClick">0</div></div>
+        <div class="tcard karta"><div class="lbl">Karta</div><div class="val num" id="dKarta">0</div></div>
+      </div>
+      <div class="section-title">So'nggi yozuvlar · <span id="dCount">0</span> ta</div>
+      <div id="dashList"></div>
+    </div>
 
-      <div class="section-title">Hisobot</div>
-      <div class="card" style="padding:8px 12px">
-        <table>
-          <thead><tr><th>Davr</th><th>Soni</th><th>Summa</th><th>Qarz</th></tr></thead>
-          <tbody id="reportBody"></tbody>
-        </table>
-      </div>
-
-      <div class="section-title">Xodimlar bo'yicha</div>
-      <div class="card" style="padding:8px 12px">
-        <table>
-          <thead><tr><th>Xodim</th><th>Soni</th><th>Summa</th><th>Qarz</th></tr></thead>
-          <tbody id="workerSummary"></tbody>
-        </table>
+    <!-- ADD -->
+    <div id="pgAdd" class="page hidden">
+      <div class="card">
+        <div id="addMsg"></div>
+        <label>Mijoz ismi</label>
+        <input id="fMijoz" type="text" placeholder="Ism familiya">
+        <label>Telefon</label>
+        <input id="fTel" type="tel" inputmode="tel" placeholder="+998 __ ___ __ __">
+        <label>Xizmat</label>
+        <select id="svcPick"></select>
+        <div id="manualName" class="hidden">
+          <label>Xizmat nomi</label>
+          <input id="fXizmat" type="text" placeholder="Xizmat nomini yozing">
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px">
+          <div><label>Narx</label><input id="fNarx" type="number" inputmode="numeric" min="0" placeholder="0"></div>
+          <div><label>Soni</label><input id="fSoni" type="number" inputmode="numeric" min="1" value="1"></div>
+        </div>
+        <div class="tcard" style="text-align:left; margin-bottom:12px">
+          <div class="lbl">Summa</div><div class="val num" id="summaView" style="font-size:20px">0</div>
+        </div>
+        <label>To'lov turi</label>
+        <div class="seg" id="paySeg">
+          <button type="button" data-k="naqd" class="on">Naqd</button>
+          <button type="button" data-k="payme">Payme</button>
+          <button type="button" data-k="click">Click</button>
+          <button type="button" data-k="karta">Karta</button>
+        </div>
+        <div class="switch-row">
+          <input id="fFullPaid" type="checkbox" checked>
+          <label for="fFullPaid">To'liq to'landi</label>
+        </div>
+        <div id="paidWrap" class="hidden">
+          <label>To'langan summa (qolgani qarz)</label>
+          <input id="fPaid" type="number" inputmode="numeric" min="0" placeholder="0">
+        </div>
+        <label>Izoh (ixtiyoriy)</label>
+        <textarea id="fIzoh" placeholder="Qo'shimcha izoh"></textarea>
+        <button class="btn" id="btnAdd">Saqlash</button>
       </div>
     </div>
 
-    <!-- ---- Records list (both roles) ---- -->
-    <div class="section-title" id="listTitle">Bugungi yozuvlar</div>
-    <div id="recList"></div>
+    <!-- HISOBOT -->
+    <div id="pgReport" class="page hidden">
+      <div class="seg seg2" id="rpSub">
+        <button data-s="davrlar" class="on">Davrlar</button>
+        <button data-s="xodimlar">Xodimlar</button>
+      </div>
+      <button class="btn btn-ghost" id="btnExcelRep" style="margin-bottom:14px">📥 Excelga yuklash</button>
+
+      <div id="rpDavrlar">
+        <div class="filters">
+          <select id="rpPeriod">
+            <option value="kun">Kunlik</option>
+            <option value="hafta">Haftalik</option>
+            <option value="oy" selected>Oylik</option>
+            <option value="yil">Yillik</option>
+          </select>
+          <select id="rpXodim"><option value="">Barcha xodim</option></select>
+        </div>
+        <div class="grid4">
+          <div class="tcard naqd"><div class="lbl">Naqd</div><div class="val num" id="rNaqd">0</div></div>
+          <div class="tcard payme"><div class="lbl">Payme</div><div class="val num" id="rPayme">0</div></div>
+          <div class="tcard click"><div class="lbl">Click</div><div class="val num" id="rClick">0</div></div>
+          <div class="tcard karta"><div class="lbl">Karta</div><div class="val num" id="rKarta">0</div></div>
+        </div>
+        <div class="section-title">Davrlar bo'yicha</div>
+        <div class="card" style="padding:8px 12px">
+          <table><thead><tr><th>Davr</th><th>Soni</th><th>Tushum</th><th>Qarz</th></tr></thead>
+          <tbody id="reportBody"></tbody></table>
+        </div>
+      </div>
+
+      <div id="rpXodimlar" class="hidden">
+        <div class="filters">
+          <select id="wkPeriod">
+            <option value="today" selected>Bugun</option>
+            <option value="week">7 kun</option>
+            <option value="month">30 kun</option>
+            <option value="year">Bu yil</option>
+            <option value="all">Hammasi</option>
+          </select>
+        </div>
+        <div id="workersWrap"></div>
+      </div>
+    </div>
+
+    <!-- MIJOZLAR -->
+    <div id="pgClients" class="page hidden">
+      <div class="seg seg2" id="clSub">
+        <button data-f="all" class="on">Hammasi</button>
+        <button data-f="debt">Qarzdorlar</button>
+      </div>
+      <div class="filters"><input id="clSearch" type="text" placeholder="Ism yoki telefon izlash"></div>
+      <button class="btn btn-ghost" id="btnExcelCl" style="margin-bottom:14px">📥 Excelga yuklash</button>
+      <div class="grid3">
+        <div class="tcard"><div class="lbl">Mijozlar</div><div class="val num" id="clCount">0</div></div>
+        <div class="tcard debt"><div class="lbl">Jami qarz</div><div class="val num" id="clDebt">0</div></div>
+        <div class="tcard paid"><div class="lbl">Jami tushum</div><div class="val num" id="clPaid">0</div></div>
+      </div>
+      <div id="clientsWrap"></div>
+    </div>
+
+    <!-- SOZLAMA -->
+    <div id="pgSettings" class="page hidden">
+      <div class="section-title">Xodimlar</div>
+      <div class="card">
+        <div id="empMsg"></div>
+        <label>Ism</label><input id="neIsm" type="text" placeholder="Masalan: Aziza">
+        <label>Login</label><input id="neLogin" type="text" autocapitalize="off" placeholder="masalan: aziza">
+        <label>Parol</label><input id="neParol" type="text" placeholder="1234">
+        <button class="btn" id="btnAddEmp">Xodim qo'shish</button>
+      </div>
+      <div id="empList"></div>
+
+      <div class="section-title">Xizmatlar</div>
+      <div class="card">
+        <div id="svcMsg"></div>
+        <label>Yangi xizmat nomi</label><input id="nsName" type="text" placeholder="Xizmat nomi">
+        <label>Narxi</label><input id="nsPrice" type="number" inputmode="numeric" min="0" placeholder="0">
+        <button class="btn" id="btnAddSvc">Xizmat qo'shish</button>
+      </div>
+      <div id="svcList"></div>
+    </div>
 
   </div>
+
+  <nav class="tabs" id="tabs"></nav>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script>
-const SUPABASE_URL = "https://wfmwxwdawiectcusjnkz.supabase.co";
-const SUPABASE_KEY = "sb_publishable_xEPsFgv-ACNKeAFJt2MMiA_Q3Vbte4F";
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const SUPABASE_URL="https://wfmwxwdawiectcusjnkz.supabase.co";
+const SUPABASE_KEY="sb_publishable_xEPsFgv-ACNKeAFJt2MMiA_Q3Vbte4F";
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
-let user = null;      // {id, ism, rol, login}
-let allXodim = [];    // for boss filter
+const PAY=[{k:'naqd',l:'Naqd'},{k:'payme',l:'Payme'},{k:'click',l:'Click'},{k:'karta',l:'Karta'}];
+let user=null, services=[], payChoice='naqd', clientsData={};
 
-/* ---------- helpers ---------- */
-const $ = id => document.getElementById(id);
-const fmt = n => (Number(n)||0).toLocaleString('ru-RU'); // 1 000 000
-function msg(el, text, type){ el.innerHTML = text ? `<div class="msg ${type}">${text}</div>` : ""; }
-function save(u){ try{ localStorage.setItem('bd_user', JSON.stringify(u)); }catch(e){} }
-function load(){ try{ return JSON.parse(localStorage.getItem('bd_user')||'null'); }catch(e){ return null; } }
-function wipe(){ try{ localStorage.removeItem('bd_user'); }catch(e){} }
+const $=id=>document.getElementById(id);
+const fmt=n=>(Number(n)||0).toLocaleString('ru-RU');
+function msg(el,t,ty){ el.innerHTML=t?`<div class="msg ${ty}">${t}</div>`:""; }
+function save(u){ try{localStorage.setItem('bd_user',JSON.stringify(u));}catch(e){} }
+function load(){ try{return JSON.parse(localStorage.getItem('bd_user')||'null');}catch(e){return null;} }
+function wipe(){ try{localStorage.removeItem('bd_user');}catch(e){} }
 
-function periodStart(p){
-  const d = new Date();
-  if(p==='today'){ d.setHours(0,0,0,0); return d.toISOString(); }
-  if(p==='week'){ d.setDate(d.getDate()-7); return d.toISOString(); }
-  if(p==='month'){ d.setDate(d.getDate()-30); return d.toISOString(); }
-  return null; // all
-}
-function timeStr(iso){
-  const d = new Date(iso);
-  return d.toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit'}) + ' ' +
-         d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
-}
+function periodStart(p){ const d=new Date();
+  if(p==='today'){d.setHours(0,0,0,0);return d.toISOString();}
+  if(p==='week'){d.setDate(d.getDate()-7);return d.toISOString();}
+  if(p==='month'){d.setDate(d.getDate()-30);return d.toISOString();}
+  if(p==='year'){return new Date(d.getFullYear(),0,1).toISOString();}
+  return null; }
+function timeStr(iso){ const d=new Date(iso);
+  return d.toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit'})+' '+d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}); }
+function payLabel(k){ const p=PAY.find(x=>x.k===k); return p?p.l:'Naqd'; }
 
 /* ---------- login ---------- */
 async function doLogin(){
-  const login = $('inLogin').value.trim();
-  const parol = $('inParol').value;
-  if(!login || !parol){ msg($('loginMsg'),'Login va parolni kiriting','err'); return; }
-  $('btnLogin').disabled = true;
-  const { data, error } = await sb.from('xodimlar')
-    .select('id,login,ism,rol,faol')
-    .eq('login', login).eq('parol', parol).eq('faol', true).limit(1);
-  $('btnLogin').disabled = false;
+  const login=$('inLogin').value.trim(), parol=$('inParol').value.trim();
+  if(!login||!parol){ msg($('loginMsg'),'Login va parolni kiriting','err'); return; }
+  $('btnLogin').disabled=true;
+  const {data,error}=await sb.from('xodimlar').select('id,login,ism,rol,faol')
+    .eq('login',login).eq('parol',parol).eq('faol',true).limit(1);
+  $('btnLogin').disabled=false;
   if(error){ msg($('loginMsg'),'Xatolik: '+error.message,'err'); return; }
-  if(!data || !data.length){ msg($('loginMsg'),'Login yoki parol xato','err'); return; }
-  user = data[0]; save(user); enterApp();
+  if(!data||!data.length){ msg($('loginMsg'),'Login yoki parol xato','err'); return; }
+  user=data[0]; save(user); enterApp();
+}
+function logout(){ user=null; wipe(); $('appView').classList.add('hidden');
+  $('loginView').classList.remove('hidden'); $('inLogin').value=''; $('inParol').value=''; msg($('loginMsg'),'',''); }
+
+/* ---------- setup ---------- */
+const TABS_BOSS=[['dash','Bosh','🏠'],['add','Qo\'shish','➕'],['report','Hisobot','📊'],['clients','Mijozlar','👤'],['settings','Sozlama','⚙️']];
+const TABS_XODIM=[['dash','Bosh','🏠'],['add','Qo\'shish','➕'],['clients','Mijozlar','👤']];
+const TITLES={dash:'Bosh sahifa',add:'Yangi xizmat',report:'Hisobot',clients:'Mijozlar',settings:'Sozlama'};
+
+async function enterApp(){
+  $('loginView').classList.add('hidden'); $('appView').classList.remove('hidden');
+  $('whoAmI').textContent=user.ism+(user.rol==='boss'?' • Boshliq':'');
+  const tabs=user.rol==='boss'?TABS_BOSS:TABS_XODIM;
+  $('tabs').innerHTML=tabs.map(t=>`<button data-p="${t[0]}"><span class="ic">${t[2]}</span>${t[1]}</button>`).join('');
+  $('tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>switchTab(b.dataset.p));
+  await loadServices();
+  if(user.rol==='boss') loadXodimSelect();
+  switchTab('dash');
+}
+function switchTab(p){
+  ['Dash','Add','Report','Clients','Settings'].forEach(x=>$('pg'+x).classList.add('hidden'));
+  const map={dash:'Dash',add:'Add',report:'Report',clients:'Clients',settings:'Settings'};
+  $('pg'+map[p]).classList.remove('hidden');
+  $('viewTitle').textContent=TITLES[p];
+  $('tabs').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.p===p));
+  if(p==='dash') loadDash();
+  if(p==='report') loadReport();
+  if(p==='clients') loadClients();
+  if(p==='settings'){ renderServiceManage(); loadEmployees(); }
 }
 
-function enterApp(){
-  $('loginView').classList.add('hidden');
-  $('appView').classList.remove('hidden');
-  $('whoAmI').textContent = user.ism + (user.rol==='boss' ? ' • Boshliq' : '');
-  const isBoss = user.rol==='boss';
-  $('bossBlock').classList.toggle('hidden', !isBoss);
-  // sellers also can add; boss adds too (keeps it flexible)
-  if(isBoss){ loadXodimList(); }
-  refresh();
+/* ---------- services (picker) ---------- */
+async function loadServices(){
+  const {data}=await sb.from('xizmat_turlari').select('*').eq('faol',true).order('nom');
+  services=data||[];
+  $('svcPick').innerHTML=services.map(s=>`<option value="${s.id}">${s.nom} — ${fmt(s.narx)}</option>`).join('')
+    +'<option value="__m">Boshqa (qo\'lda)</option>';
+  onServicePick();
 }
-
-function logout(){ user=null; wipe();
-  $('appView').classList.add('hidden'); $('loginView').classList.remove('hidden');
-  $('inLogin').value=''; $('inParol').value=''; msg($('loginMsg'),'','');
+function onServicePick(){
+  const v=$('svcPick').value;
+  if(v==='__m'){ $('manualName').classList.remove('hidden'); $('fNarx').value=''; }
+  else{ $('manualName').classList.add('hidden'); const s=services.find(x=>String(x.id)===v); if(s)$('fNarx').value=s.narx; }
+  recalcSumma();
 }
+function recalcSumma(){ $('summaView').textContent=fmt((Number($('fNarx').value)||0)*(Number($('fSoni').value)||0)); }
+function setPay(k){ payChoice=k; $('paySeg').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===k)); }
 
-/* ---------- add xizmat ---------- */
+/* ---------- add record ---------- */
 async function addXizmat(){
-  const mijoz = $('fMijoz').value.trim();
-  const xizmat = $('fXizmat').value.trim();
-  const summa = Number($('fSumma').value)||0;
+  const mijoz=$('fMijoz').value.trim(), v=$('svcPick').value;
+  const xizmatNom=v==='__m'?$('fXizmat').value.trim():(services.find(x=>String(x.id)===v)||{}).nom||'';
+  const narx=Number($('fNarx').value)||0, soni=Number($('fSoni').value)||0, summa=narx*soni;
   if(!mijoz){ msg($('addMsg'),'Mijoz ismini kiriting','err'); return; }
-  if(!xizmat){ msg($('addMsg'),'Xizmat nomini kiriting','err'); return; }
-  if(summa<=0){ msg($('addMsg'),'Summani kiriting','err'); return; }
-
-  const full = $('fFullPaid').checked;
-  let paid = full ? summa : (Number($('fPaid').value)||0);
-  if(paid>summa) paid = summa;
-  const holati = paid>=summa ? 'tolangan' : 'qarz';
-
-  $('btnAdd').disabled = true;
-  const { error } = await sb.from('xizmatlar').insert({
-    mijoz_nomi:mijoz, telefon:$('fTel').value.trim(), xizmat_nomi:xizmat,
-    summa:summa, tolangan_summa:paid, tolov_holati:holati,
-    xodim_id:user.id, xodim_ism:user.ism, izoh:$('fIzoh').value.trim()
-  });
-  $('btnAdd').disabled = false;
-  if(error){ msg($('addMsg'),'Saqlashda xatolik: '+error.message,'err'); return; }
-  // clear
-  $('fMijoz').value=''; $('fTel').value=''; $('fXizmat').value='';
-  $('fSumma').value=''; $('fPaid').value=''; $('fIzoh').value='';
-  $('fFullPaid').checked=true; $('paidWrap').classList.add('hidden');
-  msg($('addMsg'),'Saqlandi ✓','ok');
-  setTimeout(()=>msg($('addMsg'),'',''),2000);
-  refresh();
+  if(!xizmatNom){ msg($('addMsg'),'Xizmatni tanlang yoki nomini yozing','err'); return; }
+  if(summa<=0){ msg($('addMsg'),'Narx va sonini kiriting','err'); return; }
+  const full=$('fFullPaid').checked; let paid=full?summa:(Number($('fPaid').value)||0);
+  if(paid>summa) paid=summa; const holati=paid>=summa?'tolangan':'qarz';
+  $('btnAdd').disabled=true;
+  const {error}=await sb.from('xizmatlar').insert({
+    mijoz_nomi:mijoz, telefon:$('fTel').value.trim(), xizmat_nomi:xizmatNom,
+    narx, soni, summa, tolangan_summa:paid, tolov_holati:holati, tolov_turi:payChoice,
+    xodim_id:user.id, xodim_ism:user.ism, izoh:$('fIzoh').value.trim() });
+  $('btnAdd').disabled=false;
+  if(error){ msg($('addMsg'),'Xatolik: '+error.message,'err'); return; }
+  $('fMijoz').value='';$('fTel').value='';$('fXizmat').value='';$('fSoni').value='1';
+  $('fPaid').value='';$('fIzoh').value='';$('fFullPaid').checked=true;$('paidWrap').classList.add('hidden');
+  $('svcPick').selectedIndex=0; onServicePick(); setPay('naqd');
+  msg($('addMsg'),'Saqlandi ✓','ok'); setTimeout(()=>msg($('addMsg'),'',''),2000);
 }
 
-/* ---------- load & render ---------- */
-async function loadXodimList(){
-  const { data } = await sb.from('xodimlar').select('id,ism,rol').eq('faol',true).order('id');
-  allXodim = data||[];
-  const sel = $('fltXodim');
-  sel.innerHTML = '<option value="">Barcha xodim</option>' +
-    allXodim.filter(x=>x.rol!=='boss').map(x=>`<option value="${x.id}">${x.ism}</option>`).join('');
+/* ---------- fetch/sum ---------- */
+async function fetchRows(from,xodimId){
+  let q=sb.from('xizmatlar').select('*').order('sana',{ascending:false}).limit(5000);
+  if(from) q=q.gte('sana',from); if(xodimId) q=q.eq('xodim_id',xodimId);
+  const {data}=await q; return data||[];
+}
+function sums(rows){ const s={total:0,paid:0,debt:0,cnt:rows.length,naqd:0,payme:0,click:0,karta:0};
+  rows.forEach(r=>{ const t=Number(r.summa)||0,p=Number(r.tolangan_summa)||0;
+    s.total+=t; s.paid+=p; s.debt+=(t-p); s[r.tolov_turi||'naqd']+=p; }); return s; }
+
+/* ---------- dashboard ---------- */
+async function loadDash(){
+  const isBoss=user.rol==='boss';
+  const rows=await fetchRows(periodStart(isBoss?$('dashPeriod').value:'today'), isBoss?null:user.id);
+  const s=sums(rows);
+  $('dTotal').textContent=fmt(s.total);$('dPaid').textContent=fmt(s.paid);$('dDebt').textContent=fmt(s.debt);
+  $('dNaqd').textContent=fmt(s.naqd);$('dPayme').textContent=fmt(s.payme);
+  $('dClick').textContent=fmt(s.click);$('dKarta').textContent=fmt(s.karta);
+  $('dCount').textContent=s.cnt;
+  renderList($('dashList'), rows.slice(0,50), isBoss);
 }
 
-async function refresh(){
-  const isBoss = user.rol==='boss';
-
-  if(isBoss){
-    const { data, error } = await sb.from('xizmatlar').select('*')
-      .order('sana',{ascending:false}).limit(5000);
-    if(error){ $('recList').innerHTML = `<div class="empty">Xatolik: ${error.message}</div>`; return; }
-    let rows = data||[];
-    const xid = $('fltXodim').value;
-    if(xid) rows = rows.filter(r=>String(r.xodim_id)===xid);
-    const s = $('fltSearch').value.trim().toLowerCase();
-    if(s) rows = rows.filter(r=>
-      (r.mijoz_nomi||'').toLowerCase().includes(s) ||
-      (r.telefon||'').toLowerCase().includes(s) ||
-      (r.xizmat_nomi||'').toLowerCase().includes(s));
-    renderTotals(rows);
-    renderReport(rows, $('fltPeriod').value);
-    renderWorkerSummary(rows);
-    $('listTitle').textContent = 'Yozuvlar (oxirgi 100 ta)';
-    renderList(rows.slice(0,100), true);
-  }else{
-    const { data, error } = await sb.from('xizmatlar').select('*')
-      .eq('xodim_id', user.id).gte('sana', periodStart('today'))
-      .order('sana',{ascending:false}).limit(500);
-    if(error){ $('recList').innerHTML = `<div class="empty">Xatolik: ${error.message}</div>`; return; }
-    $('listTitle').textContent = 'Bugungi yozuvlarim';
-    renderList(data||[], false);
-  }
+/* ---------- report: davrlar ---------- */
+const UZM=['Yanvar','Fevral','Mart','Aprel','May','Iyun','Iyul','Avgust','Sentabr','Oktabr','Noyabr','Dekabr'];
+const pad=n=>String(n).padStart(2,'0');
+function periodKey(iso,type){ const d=new Date(iso);
+  if(type==='kun') return {key:`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`,label:`${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}`,sort:d.getTime()};
+  if(type==='hafta'){ const t=new Date(d),o=(t.getDay()+6)%7; t.setDate(t.getDate()-o); t.setHours(0,0,0,0);
+    const e=new Date(t); e.setDate(t.getDate()+6);
+    return {key:'w'+t.getTime(),label:`${pad(t.getDate())}.${pad(t.getMonth()+1)} – ${pad(e.getDate())}.${pad(e.getMonth()+1)}`,sort:t.getTime()};}
+  if(type==='oy') return {key:`${d.getFullYear()}-${pad(d.getMonth()+1)}`,label:`${UZM[d.getMonth()]} ${d.getFullYear()}`,sort:new Date(d.getFullYear(),d.getMonth(),1).getTime()};
+  return {key:String(d.getFullYear()),label:String(d.getFullYear()),sort:new Date(d.getFullYear(),0,1).getTime()};
+}
+function switchReportSub(s){
+  $('rpDavrlar').classList.toggle('hidden',s!=='davrlar');
+  $('rpXodimlar').classList.toggle('hidden',s!=='xodimlar');
+  $('rpSub').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.s===s));
+  if(s==='davrlar') loadReport(); else loadWorkers();
+}
+async function loadReport(){
+  const xid=$('rpXodim').value||null;
+  const rows=await fetchRows(null,xid); const s=sums(rows);
+  $('rNaqd').textContent=fmt(s.naqd);$('rPayme').textContent=fmt(s.payme);
+  $('rClick').textContent=fmt(s.click);$('rKarta').textContent=fmt(s.karta);
+  const type=$('rpPeriod').value, map={};
+  rows.forEach(r=>{ const pk=periodKey(r.sana,type);
+    if(!map[pk.key]) map[pk.key]={label:pk.label,sort:pk.sort,cnt:0,sum:0,paid:0};
+    const m=map[pk.key]; m.cnt++; m.sum+=Number(r.summa)||0; m.paid+=Number(r.tolangan_summa)||0; });
+  const list=Object.values(map).sort((a,b)=>b.sort-a.sort);
+  $('reportBody').innerHTML=list.length?list.map(m=>
+    `<tr><td>${m.label}</td><td class="num">${m.cnt}</td><td class="num">${fmt(m.paid)}</td>
+     <td class="num" style="color:var(--debt)">${fmt(m.sum-m.paid)}</td></tr>`).join('')
+    :'<tr><td colspan="4" style="text-align:center;color:var(--muted)">Ma\'lumot yo\'q</td></tr>';
+}
+async function loadXodimSelect(){
+  const {data}=await sb.from('xodimlar').select('id,ism,rol').eq('faol',true).order('id');
+  const xs=(data||[]).filter(x=>x.rol!=='boss');
+  $('rpXodim').innerHTML='<option value="">Barcha xodim</option>'+xs.map(x=>`<option value="${x.id}">${x.ism}</option>`).join('');
 }
 
-/* ---------- report grouping ---------- */
-const UZ_MONTHS = ['Yanvar','Fevral','Mart','Aprel','May','Iyun','Iyul','Avgust','Sentabr','Oktabr','Noyabr','Dekabr'];
-function pad(n){ return String(n).padStart(2,'0'); }
-function periodKey(iso, type){
-  const d = new Date(iso);
-  if(type==='kun'){
-    return { key:`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`,
-             label:`${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}`,
-             sort:d.getTime() };
-  }
-  if(type==='hafta'){
-    const t = new Date(d); const off = (t.getDay()+6)%7; // Monday=0
-    t.setDate(t.getDate()-off); t.setHours(0,0,0,0);
-    const end = new Date(t); end.setDate(t.getDate()+6);
-    return { key:`w${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`,
-             label:`${pad(t.getDate())}.${pad(t.getMonth()+1)} – ${pad(end.getDate())}.${pad(end.getMonth()+1)}`,
-             sort:t.getTime() };
-  }
-  if(type==='oy'){
-    return { key:`${d.getFullYear()}-${pad(d.getMonth()+1)}`,
-             label:`${UZ_MONTHS[d.getMonth()]} ${d.getFullYear()}`,
-             sort:new Date(d.getFullYear(),d.getMonth(),1).getTime() };
-  }
-  return { key:String(d.getFullYear()), label:String(d.getFullYear()),
-           sort:new Date(d.getFullYear(),0,1).getTime() };
-}
-function renderReport(rows, type){
-  const map = {};
-  rows.forEach(r=>{
-    const pk = periodKey(r.sana, type);
-    if(!map[pk.key]) map[pk.key] = {label:pk.label, sort:pk.sort, cnt:0, sum:0, paid:0};
-    const m = map[pk.key];
-    m.cnt++; m.sum += Number(r.summa)||0; m.paid += Number(r.tolangan_summa)||0;
-  });
-  const list = Object.values(map).sort((a,b)=>b.sort-a.sort);
-  $('reportBody').innerHTML = list.length ? list.map(m=>
-    `<tr><td>${m.label}</td><td class="num">${m.cnt}</td>
-     <td class="num">${fmt(m.sum)}</td>
-     <td class="num" style="color:var(--debt)">${fmt(m.sum-m.paid)}</td></tr>`
-  ).join('') : '<tr><td colspan="4" style="text-align:center;color:var(--muted)">Ma\'lumot yo\'q</td></tr>';
+/* ---------- report: xodimlar share ---------- */
+async function loadWorkers(){
+  const rows=await fetchRows(periodStart($('wkPeriod').value),null);
+  const map={};
+  rows.forEach(r=>{ const id=r.xodim_id||0, k=r.xodim_ism||'—';
+    if(!map[id]) map[id]={ism:k,cnt:0,paid:0,debt:0,naqd:0,payme:0,click:0,karta:0};
+    const m=map[id],t=Number(r.summa)||0,p=Number(r.tolangan_summa)||0;
+    m.cnt++; m.paid+=p; m.debt+=(t-p); m[r.tolov_turi||'naqd']+=p; });
+  const arr=Object.values(map).sort((a,b)=>b.paid-a.paid);
+  const totalPaid=arr.reduce((s,m)=>s+m.paid,0)||1;
+  $('workersWrap').innerHTML=arr.length?arr.map(m=>{ const pct=Math.round(m.paid/totalPaid*100);
+    return `<div class="wcard"><div class="wtop"><div class="wname">${m.ism}</div><div class="share">${pct}%</div></div>
+      <div class="bar"><i style="width:${pct}%"></i></div>
+      <div class="wgrid">
+        <div class="b"><div class="k">Soni</div><div class="v num">${m.cnt}</div></div>
+        <div class="b"><div class="k">Naqd</div><div class="v num">${fmt(m.naqd)}</div></div>
+        <div class="b"><div class="k">Payme</div><div class="v num">${fmt(m.payme)}</div></div>
+        <div class="b"><div class="k">Click</div><div class="v num">${fmt(m.click)}</div></div>
+        <div class="b"><div class="k">Karta</div><div class="v num">${fmt(m.karta)}</div></div>
+        <div class="b"><div class="k">Tushum</div><div class="v num" style="color:var(--paid)">${fmt(m.paid)}</div></div>
+        <div class="b"><div class="k">Qarz</div><div class="v num" style="color:var(--debt)">${fmt(m.debt)}</div></div>
+        <div class="b"><div class="k">Ulush</div><div class="v num">${pct}%</div></div>
+      </div></div>`; }).join('') : '<div class="empty">Bu davrda yozuv yo\'q</div>';
 }
 
-function renderTotals(rows){
-  let t=0,p=0;
-  rows.forEach(r=>{ t+=Number(r.summa)||0; p+=Number(r.tolangan_summa)||0; });
-  $('tTotal').textContent = fmt(t);
-  $('tPaid').textContent  = fmt(p);
-  $('tDebt').textContent  = fmt(t-p);
+/* ---------- clients (customer base + debts) ---------- */
+let clFilter='all';
+async function loadClients(){
+  const rows=await fetchRows(null,null);
+  const map={};
+  rows.forEach(r=>{ const key=(r.telefon&&r.telefon.trim())?('t:'+r.telefon.trim()):('n:'+(r.mijoz_nomi||'').toLowerCase());
+    if(!map[key]) map[key]={ism:r.mijoz_nomi||'—',tel:r.telefon||'',cnt:0,total:0,paid:0,debt:0,rows:[]};
+    const m=map[key],t=Number(r.summa)||0,p=Number(r.tolangan_summa)||0;
+    if(!m.tel&&r.telefon) m.tel=r.telefon; if(m.ism==='—'&&r.mijoz_nomi) m.ism=r.mijoz_nomi;
+    m.cnt++; m.total+=t; m.paid+=p; m.debt+=(t-p); m.rows.push(r); });
+  clientsData=map;
+  renderClients();
 }
-
-function renderWorkerSummary(rows){
-  const map = {};
-  rows.forEach(r=>{
-    const k = r.xodim_ism || '—';
-    if(!map[k]) map[k]={cnt:0,sum:0,paid:0};
-    map[k].cnt++; map[k].sum+=Number(r.summa)||0; map[k].paid+=Number(r.tolangan_summa)||0;
-  });
-  const keys = Object.keys(map).sort((a,b)=>map[b].sum-map[a].sum);
-  $('workerSummary').innerHTML = keys.length ? keys.map(k=>
-    `<tr><td>${k}</td><td class="num">${map[k].cnt}</td>
-     <td class="num">${fmt(map[k].sum)}</td>
-     <td class="num" style="color:var(--debt)">${fmt(map[k].sum-map[k].paid)}</td></tr>`
-  ).join('') : '<tr><td colspan="4" style="text-align:center;color:var(--muted)">Ma\'lumot yo\'q</td></tr>';
-}
-
-function renderList(rows, isBoss){
-  if(!rows.length){ $('recList').innerHTML = '<div class="empty">Hozircha yozuv yo\'q</div>'; return; }
-  $('recList').innerHTML = rows.map(r=>{
-    const summa=Number(r.summa)||0, paid=Number(r.tolangan_summa)||0, qarz=summa-paid;
-    const isDebt = qarz>0;
-    const tel = r.telefon ? `<a class="call" href="tel:${r.telefon}">${r.telefon}</a>` : '';
-    const payBtn = isDebt ? `<button class="btn btn-sm btn-ghost" onclick="payDebt(${r.id},${qarz})">To'lov qo'shish</button>` : '';
-    return `<div class="rec">
-      <div class="top">
-        <div>
-          <div class="name">${r.mijoz_nomi||''}</div>
-          <div class="svc">${r.xizmat_nomi||''}</div>
-        </div>
-        <div style="text-align:right">
-          <div class="sum num">${fmt(summa)}</div>
-          <span class="pill ${isDebt?'debt':'paid'}">${isDebt?('Qarz '+fmt(qarz)):'To\'langan'}</span>
+function renderClients(){
+  const s=($('clSearch').value||'').trim().toLowerCase();
+  let arr=Object.values(clientsData);
+  if(clFilter==='debt') arr=arr.filter(m=>m.debt>0);
+  if(s) arr=arr.filter(m=>(m.ism||'').toLowerCase().includes(s)||(m.tel||'').toLowerCase().includes(s));
+  arr.sort((a,b)=> clFilter==='debt' ? b.debt-a.debt : b.total-a.total);
+  $('clCount').textContent=arr.length;
+  $('clDebt').textContent=fmt(arr.reduce((x,m)=>x+m.debt,0));
+  $('clPaid').textContent=fmt(arr.reduce((x,m)=>x+m.paid,0));
+  $('clientsWrap').innerHTML=arr.length?arr.map((m,i)=>{
+    const tel=m.tel?`<a class="call" href="tel:${m.tel}">${m.tel}</a>`:'—';
+    const dbadge=m.debt>0?`<div class="share d">Qarz ${fmt(m.debt)}</div>`:`<div class="share">To'liq</div>`;
+    return `<div class="wcard">
+      <div class="clhead" onclick="toggleClient(this)">
+        <div class="wtop"><div><div class="wname">${m.ism}</div><div class="wsub">${tel}</div></div>${dbadge}</div>
+        <div class="wgrid" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="b"><div class="k">Yozuv</div><div class="v num">${m.cnt}</div></div>
+          <div class="b"><div class="k">Tushum</div><div class="v num" style="color:var(--paid)">${fmt(m.paid)}</div></div>
+          <div class="b"><div class="k">Qarz</div><div class="v num" style="color:var(--debt)">${fmt(m.debt)}</div></div>
         </div>
       </div>
-      <div class="meta">
-        ${tel}
-        ${isBoss?('<span>'+(r.xodim_ism||'')+'</span>'):''}
-        <span>${timeStr(r.sana)}</span>
-        ${r.izoh?('<span>'+r.izoh+'</span>'):''}
-      </div>
-      ${payBtn?('<div class="actions">'+payBtn+'</div>'):''}
-    </div>`;
+      <div class="cl-recs hidden" data-i="${i}"></div></div>`;
+  }).join('') : '<div class="empty">Mijoz topilmadi</div>';
+  // stash filtered array for expansion
+  $('clientsWrap')._arr=arr;
+}
+function toggleClient(head){
+  const recs=head.nextElementSibling;
+  const open=!recs.classList.contains('hidden');
+  if(open){ recs.classList.add('hidden'); return; }
+  recs.classList.remove('hidden');
+  if(!recs.dataset.done){
+    const arr=$('clientsWrap')._arr, m=arr[Number(recs.dataset.i)];
+    renderList(recs, m.rows, user.rol==='boss'); recs.dataset.done='1';
+  }
+}
+function setClFilter(f){ clFilter=f; $('clSub').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.f===f)); renderClients(); }
+
+/* ---------- employee management ---------- */
+async function loadEmployees(){
+  if(user.rol!=='boss'){ $('empList').innerHTML=''; return; }
+  const {data}=await sb.from('xodimlar').select('*').eq('faol',true).order('id');
+  const emps=data||[];
+  $('empList').innerHTML=emps.map(e=>
+    `<div class="rec"><div class="top"><div>
+      <div class="name">${e.ism} ${e.rol==='boss'?'• Boshliq':''}</div>
+      <div class="svc">login: ${e.login} · parol: ${e.parol}</div></div></div>
+      <div class="actions">
+        <button class="btn btn-sm btn-ghost" onclick="renameEmp(${e.id})">Ism</button>
+        <button class="btn btn-sm btn-ghost" onclick="passEmp(${e.id})">Parol</button>
+        ${e.rol!=='boss'?`<button class="btn btn-sm btn-danger" onclick="delEmp(${e.id})">O'chirish</button>`:''}
+      </div></div>`).join('');
+}
+async function addEmployee(){
+  const ism=$('neIsm').value.trim(), login=$('neLogin').value.trim(), parol=($('neParol').value.trim()||'1234');
+  if(!ism||!login){ msg($('empMsg'),'Ism va login kiriting','err'); return; }
+  const {error}=await sb.from('xodimlar').insert({ism,login,parol,rol:'xodim'});
+  if(error){ msg($('empMsg'), error.message.includes('duplicate')?'Bu login band':'Xatolik: '+error.message,'err'); return; }
+  $('neIsm').value='';$('neLogin').value='';$('neParol').value='';
+  msg($('empMsg'),'Qo\'shildi ✓','ok'); setTimeout(()=>msg($('empMsg'),'',''),2000);
+  loadEmployees(); loadXodimSelect();
+}
+async function renameEmp(id){ const v=prompt('Yangi ism:'); if(!v) return;
+  const {error}=await sb.from('xodimlar').update({ism:v.trim()}).eq('id',id);
+  if(error){ alert('Xatolik: '+error.message); return; } loadEmployees(); loadXodimSelect(); }
+async function passEmp(id){ const v=prompt('Yangi parol:'); if(!v) return;
+  const {error}=await sb.from('xodimlar').update({parol:v.trim()}).eq('id',id);
+  if(error){ alert('Xatolik: '+error.message); return; } loadEmployees(); }
+async function delEmp(id){ if(!confirm('Bu xodim o\'chirilsinmi?')) return;
+  const {error}=await sb.from('xodimlar').update({faol:false}).eq('id',id);
+  if(error){ alert('Xatolik: '+error.message); return; } loadEmployees(); loadXodimSelect(); }
+
+/* ---------- service management ---------- */
+function renderServiceManage(){
+  $('svcList').innerHTML=services.length?services.map(s=>
+    `<div class="rec"><div class="top"><div>
+      <div class="name">${s.nom}</div><div class="svc num">${fmt(s.narx)} so'm</div></div></div>
+      <div class="actions">
+        <button class="btn btn-sm btn-ghost" onclick="editSvcPrice(${s.id})">Narx</button>
+        <button class="btn btn-sm btn-danger" onclick="delSvc(${s.id})">O'chirish</button>
+      </div></div>`).join('') : '<div class="empty">Xizmat yo\'q. Yuqoridan qo\'shing.</div>';
+}
+async function addService(){
+  const nom=$('nsName').value.trim(), narx=Number($('nsPrice').value)||0;
+  if(!nom){ msg($('svcMsg'),'Xizmat nomini kiriting','err'); return; }
+  const {error}=await sb.from('xizmat_turlari').insert({nom,narx});
+  if(error){ msg($('svcMsg'),'Xatolik: '+error.message,'err'); return; }
+  $('nsName').value='';$('nsPrice').value='';
+  msg($('svcMsg'),'Qo\'shildi ✓','ok'); setTimeout(()=>msg($('svcMsg'),'',''),2000);
+  await loadServices(); renderServiceManage();
+}
+async function editSvcPrice(id){ const s=services.find(x=>x.id===id); if(!s) return;
+  const v=prompt('Yangi narx ('+s.nom+'):',s.narx); if(v===null) return;
+  const {error}=await sb.from('xizmat_turlari').update({narx:Number(v)||0}).eq('id',id);
+  if(error){ alert('Xatolik: '+error.message); return; } await loadServices(); renderServiceManage(); }
+async function delSvc(id){ if(!confirm('Bu xizmat o\'chirilsinmi?')) return;
+  const {error}=await sb.from('xizmat_turlari').update({faol:false}).eq('id',id);
+  if(error){ alert('Xatolik: '+error.message); return; } await loadServices(); renderServiceManage(); }
+
+/* ---------- excel export ---------- */
+function saveExcel(name,aoa,sheet){
+  const ws=XLSX.utils.aoa_to_sheet(aoa), wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb,ws,sheet||'Hisobot'); XLSX.writeFile(wb,name);
+}
+async function exportRecords(){
+  const rows=await fetchRows(null,null);
+  const aoa=[['Sana','Mijoz','Telefon','Xizmat','Soni','Summa','To\'langan','Qarz','To\'lov turi','Xodim']];
+  rows.forEach(r=>{ const s=Number(r.summa)||0,p=Number(r.tolangan_summa)||0;
+    aoa.push([new Date(r.sana).toLocaleString('ru-RU'),r.mijoz_nomi||'',r.telefon||'',r.xizmat_nomi||'',
+      Number(r.soni)||1,s,p,s-p,payLabel(r.tolov_turi||'naqd'),r.xodim_ism||'']); });
+  saveExcel('birdarcha_yozuvlar.xlsx',aoa,'Yozuvlar');
+}
+function exportClients(){
+  const arr=Object.values(clientsData).sort((a,b)=>b.debt-a.debt);
+  const aoa=[['Mijoz','Telefon','Yozuvlar','Jami','Tushum','Qarz']];
+  arr.forEach(m=>aoa.push([m.ism,m.tel,m.cnt,m.total,m.paid,m.debt]));
+  saveExcel('birdarcha_mijozlar.xlsx',aoa,'Mijozlar');
+}
+
+/* ---------- record list + pay debt ---------- */
+function renderList(el,rows,showXodim){
+  if(!rows.length){ el.innerHTML='<div class="empty">Yozuv yo\'q</div>'; return; }
+  el.innerHTML=rows.map(r=>{
+    const summa=Number(r.summa)||0,paid=Number(r.tolangan_summa)||0,qarz=summa-paid,isDebt=qarz>0;
+    const tur=r.tolov_turi||'naqd', tel=r.telefon?`<a class="call" href="tel:${r.telefon}">${r.telefon}</a>`:'';
+    const payBtn=isDebt?`<button class="btn btn-sm btn-ghost" onclick="payDebt(${r.id},${qarz})">To'lov qo'shish</button>`:'';
+    const soniTxt=(Number(r.soni)||1)>1?` ×${r.soni}`:'';
+    return `<div class="rec"><div class="top">
+      <div><div class="name">${r.mijoz_nomi||''}</div><div class="svc">${r.xizmat_nomi||''}${soniTxt}</div></div>
+      <div style="text-align:right"><div class="sum num">${fmt(summa)}</div>
+        <span class="pill ${isDebt?'debt':'paid'}">${isDebt?('Qarz '+fmt(qarz)):'To\'landi'}</span></div></div>
+      <div class="meta"><span class="tag ${tur}">${payLabel(tur)}</span>${tel}
+        ${showXodim?('<span>'+(r.xodim_ism||'')+'</span>'):''}<span>${timeStr(r.sana)}</span>
+        ${r.izoh?('<span>'+r.izoh+'</span>'):''}</div>
+      ${payBtn?('<div class="actions">'+payBtn+'</div>'):''}</div>`;
   }).join('');
 }
-
-/* ---------- pay debt ---------- */
-async function payDebt(id, qarz){
-  const inp = prompt('To\'lov summasi (qolgan qarz: '+fmt(qarz)+')', qarz);
-  if(inp===null) return;
-  const add = Number(inp)||0;
-  if(add<=0) return;
-  const { data } = await sb.from('xizmatlar').select('summa,tolangan_summa').eq('id',id).limit(1);
+async function payDebt(id,qarz){
+  const inp=prompt('To\'lov summasi (qolgan qarz: '+fmt(qarz)+')',qarz); if(inp===null) return;
+  const add=Number(inp)||0; if(add<=0) return;
+  const {data}=await sb.from('xizmatlar').select('summa,tolangan_summa').eq('id',id).limit(1);
   if(!data||!data.length) return;
-  const summa=Number(data[0].summa)||0;
-  let paid=(Number(data[0].tolangan_summa)||0)+add;
-  if(paid>summa) paid=summa;
-  const holati = paid>=summa?'tolangan':'qarz';
-  const { error } = await sb.from('xizmatlar').update({tolangan_summa:paid, tolov_holati:holati}).eq('id',id);
+  const summa=Number(data[0].summa)||0; let paid=(Number(data[0].tolangan_summa)||0)+add;
+  if(paid>summa) paid=summa; const holati=paid>=summa?'tolangan':'qarz';
+  const {error}=await sb.from('xizmatlar').update({tolangan_summa:paid,tolov_holati:holati}).eq('id',id);
   if(error){ alert('Xatolik: '+error.message); return; }
-  refresh();
+  const cur=$('tabs').querySelector('button.on'); if(cur) switchTab(cur.dataset.p);
 }
 
 /* ---------- events ---------- */
-$('btnLogin').onclick = doLogin;
-$('inParol').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
-$('btnLogout').onclick = logout;
-$('btnAdd').onclick = addXizmat;
-$('fFullPaid').addEventListener('change', e=>{
-  $('paidWrap').classList.toggle('hidden', e.target.checked);
-});
-['fltPeriod','fltXodim'].forEach(id=>$(id).addEventListener('change', refresh));
-$('fltSearch').addEventListener('input', ()=>{ clearTimeout(window._t); window._t=setTimeout(refresh,300); });
+$('btnLogin').onclick=doLogin;
+$('inParol').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+$('btnLogout').onclick=logout;
+$('btnAdd').onclick=addXizmat;
+$('svcPick').addEventListener('change',onServicePick);
+$('fNarx').addEventListener('input',recalcSumma);
+$('fSoni').addEventListener('input',recalcSumma);
+$('fFullPaid').addEventListener('change',e=>$('paidWrap').classList.toggle('hidden',e.target.checked));
+$('paySeg').querySelectorAll('button').forEach(b=>b.onclick=()=>setPay(b.dataset.k));
+$('dashPeriod').addEventListener('change',loadDash);
+$('rpSub').querySelectorAll('button').forEach(b=>b.onclick=()=>switchReportSub(b.dataset.s));
+$('rpPeriod').addEventListener('change',loadReport);
+$('rpXodim').addEventListener('change',loadReport);
+$('wkPeriod').addEventListener('change',loadWorkers);
+$('clSub').querySelectorAll('button').forEach(b=>b.onclick=()=>setClFilter(b.dataset.f));
+$('clSearch').addEventListener('input',()=>{clearTimeout(window._c);window._c=setTimeout(renderClients,250);});
+$('btnAddEmp').onclick=addEmployee;
+$('btnAddSvc').onclick=addService;
+$('btnExcelRep').onclick=exportRecords;
+$('btnExcelCl').onclick=exportClients;
 
 /* ---------- auto login ---------- */
-(function(){
-  const saved = load();
-  if(saved && saved.id){ user = saved; enterApp(); }
-})();
+(function(){ const s=load(); if(s&&s.id){ user=s; enterApp(); } })();
 </script>
 </body>
 </html>
