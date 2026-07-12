@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Bir Darcha — Xizmat</title>
+<style>
+  :root{
+    --bg:#eef1f4; --card:#ffffff; --ink:#1b2733; --muted:#6b7784;
+    --line:#e2e7ec; --accent:#0f766e; --accent-2:#0b5d56;
+    --paid:#166534; --paid-bg:#dcfce7; --debt:#b91c1c; --debt-bg:#fee2e2;
+    --shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.4;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  .hidden{display:none!important}
+  .num{font-variant-numeric:tabular-nums}
+
+  /* Header */
+  header{
+    background:var(--accent); color:#fff; padding:14px 16px;
+    display:flex; align-items:center; justify-content:space-between;
+    position:sticky; top:0; z-index:10;
+    padding-top:calc(14px + env(safe-area-inset-top));
+  }
+  header .title{font-weight:700; font-size:17px}
+  header .who{font-size:12px; opacity:.85}
+  header .ver{font-size:11px; opacity:.7}
+  .btn-out{background:rgba(255,255,255,.15); color:#fff; border:0; padding:8px 12px; border-radius:10px; font-size:13px; font-weight:600}
+
+  .wrap{max-width:620px; margin:0 auto; padding:16px}
+
+  /* Login */
+  .login-box{max-width:380px; margin:8vh auto; padding:0 16px}
+  .brand{text-align:center; margin-bottom:22px}
+  .brand h1{margin:0; font-size:22px; letter-spacing:.5px}
+  .brand p{margin:4px 0 0; color:var(--muted); font-size:13px}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px; margin-bottom:14px}
+
+  label{display:block; font-size:13px; font-weight:600; color:var(--muted); margin:0 0 6px}
+  input,select,textarea{
+    width:100%; padding:12px 14px; font-size:16px; color:var(--ink);
+    border:1px solid var(--line); border-radius:10px; background:#fbfcfd; margin-bottom:12px;
+    font-family:inherit;
+  }
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); border-color:var(--accent)}
+  textarea{min-height:60px; resize:vertical}
+
+  .btn{
+    width:100%; padding:14px; font-size:16px; font-weight:700; color:#fff;
+    background:var(--accent); border:0; border-radius:12px; cursor:pointer;
+  }
+  .btn:active{background:var(--accent-2)}
+  .btn:disabled{opacity:.6}
+  .btn-sm{width:auto; padding:9px 14px; font-size:14px; border-radius:10px}
+  .btn-ghost{background:#fff; color:var(--accent); border:1px solid var(--accent)}
+
+  .switch-row{display:flex; align-items:center; gap:10px; margin-bottom:12px}
+  .switch-row input{width:auto; margin:0}
+  .switch-row label{margin:0; color:var(--ink); font-weight:600; font-size:15px}
+
+  .msg{font-size:13px; padding:10px 12px; border-radius:10px; margin-bottom:12px}
+  .msg.err{background:var(--debt-bg); color:var(--debt)}
+  .msg.ok{background:var(--paid-bg); color:var(--paid)}
+
+  /* Totals cards */
+  .totals{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:14px}
+  .tcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 10px; text-align:center; box-shadow:var(--shadow)}
+  .tcard .lbl{font-size:11px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.3px}
+  .tcard .val{font-size:17px; font-weight:800; margin-top:4px}
+  .tcard.paid .val{color:var(--paid)}
+  .tcard.debt .val{color:var(--debt)}
+
+  /* Filters */
+  .filters{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap}
+  .filters select,.filters input{margin:0; flex:1; min-width:120px}
+
+  /* Record item */
+  .rec{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:10px; box-shadow:var(--shadow)}
+  .rec .top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px}
+  .rec .name{font-weight:700}
+  .rec .svc{color:var(--muted); font-size:14px; margin-top:2px}
+  .rec .meta{color:var(--muted); font-size:12px; margin-top:6px; display:flex; gap:10px; flex-wrap:wrap}
+  .rec .sum{font-weight:800; font-size:16px; white-space:nowrap}
+  .pill{display:inline-block; font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px; margin-top:6px}
+  .pill.paid{background:var(--paid-bg); color:var(--paid)}
+  .pill.debt{background:var(--debt-bg); color:var(--debt)}
+  .rec .actions{margin-top:10px; display:flex; gap:8px}
+
+  .section-title{font-size:13px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; margin:18px 0 8px}
+  .empty{text-align:center; color:var(--muted); font-size:14px; padding:24px 8px}
+
+  /* worker summary table */
+  table{width:100%; border-collapse:collapse; font-size:14px}
+  th,td{padding:8px 6px; text-align:right; border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  th{font-size:12px; color:var(--muted); font-weight:700}
+
+  .call{color:var(--accent); text-decoration:none; font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div id="loginView">
+  <div class="login-box">
+    <div class="brand">
+      <h1>BIR DARCHA</h1>
+      <p>Xizmat ko'rsatish tizimi</p>
+    </div>
+    <div class="card">
+      <div id="loginMsg"></div>
+      <label>Login</label>
+      <input id="inLogin" type="text" autocapitalize="off" autocomplete="username" placeholder="masalan: xodim1">
+      <label>Parol</label>
+      <input id="inParol" type="password" autocomplete="current-password" placeholder="parol">
+      <button class="btn" id="btnLogin">Kirish</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="appView" class="hidden">
+  <header>
+    <div>
+      <div class="title">Bir Darcha</div>
+      <div class="who" id="whoAmI"></div>
+    </div>
+    <div style="text-align:right">
+      <button class="btn-out" id="btnLogout">Chiqish</button>
+      <div class="ver">v2</div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <!-- ---- XODIM: yangi xizmat ---- -->
+    <div id="addBlock" class="card">
+      <div id="addMsg"></div>
+      <label>Mijoz ismi</label>
+      <input id="fMijoz" type="text" placeholder="Ism familiya">
+      <label>Telefon raqami</label>
+      <input id="fTel" type="tel" inputmode="tel" placeholder="+998 __ ___ __ __">
+      <label>Xizmat nomi</label>
+      <input id="fXizmat" type="text" placeholder="Ko'rsatilgan xizmat">
+      <label>Summa (so'm)</label>
+      <input id="fSumma" type="number" inputmode="numeric" min="0" placeholder="0">
+
+      <div class="switch-row">
+        <input id="fFullPaid" type="checkbox" checked>
+        <label for="fFullPaid">To'liq to'landi</label>
+      </div>
+      <div id="paidWrap" class="hidden">
+        <label>To'langan summa (qolgani qarz)</label>
+        <input id="fPaid" type="number" inputmode="numeric" min="0" placeholder="0">
+      </div>
+
+      <label>Izoh (ixtiyoriy)</label>
+      <textarea id="fIzoh" placeholder="Qo'shimcha izoh"></textarea>
+      <button class="btn" id="btnAdd">Saqlash</button>
+    </div>
+
+    <!-- ---- BOSS: totals + filters ---- -->
+    <div id="bossBlock" class="hidden">
+      <div class="totals">
+        <div class="tcard"><div class="lbl">Jami</div><div class="val num" id="tTotal">0</div></div>
+        <div class="tcard paid"><div class="lbl">To'langan</div><div class="val num" id="tPaid">0</div></div>
+        <div class="tcard debt"><div class="lbl">Qarz</div><div class="val num" id="tDebt">0</div></div>
+      </div>
+      <div class="filters">
+        <select id="fltPeriod">
+          <option value="kun">Kunlik</option>
+          <option value="hafta">Haftalik</option>
+          <option value="oy" selected>Oylik</option>
+          <option value="yil">Yillik</option>
+        </select>
+        <select id="fltXodim"><option value="">Barcha xodim</option></select>
+      </div>
+      <div class="filters">
+        <input id="fltSearch" type="text" placeholder="Mijoz / telefon / xizmat izlash">
+      </div>
+
+      <div class="section-title">Hisobot</div>
+      <div class="card" style="padding:8px 12px">
+        <table>
+          <thead><tr><th>Davr</th><th>Soni</th><th>Summa</th><th>Qarz</th></tr></thead>
+          <tbody id="reportBody"></tbody>
+        </table>
+      </div>
+
+      <div class="section-title">Xodimlar bo'yicha</div>
+      <div class="card" style="padding:8px 12px">
+        <table>
+          <thead><tr><th>Xodim</th><th>Soni</th><th>Summa</th><th>Qarz</th></tr></thead>
+          <tbody id="workerSummary"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ---- Records list (both roles) ---- -->
+    <div class="section-title" id="listTitle">Bugungi yozuvlar</div>
+    <div id="recList"></div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://wfmwxwdawiectcusjnkz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_xEPsFgv-ACNKeAFJt2MMiA_Q3Vbte4F";
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let user = null;      // {id, ism, rol, login}
+let allXodim = [];    // for boss filter
+
+/* ---------- helpers ---------- */
+const $ = id => document.getElementById(id);
+const fmt = n => (Number(n)||0).toLocaleString('ru-RU'); // 1 000 000
+function msg(el, text, type){ el.innerHTML = text ? `<div class="msg ${type}">${text}</div>` : ""; }
+function save(u){ try{ localStorage.setItem('bd_user', JSON.stringify(u)); }catch(e){} }
+function load(){ try{ return JSON.parse(localStorage.getItem('bd_user')||'null'); }catch(e){ return null; } }
+function wipe(){ try{ localStorage.removeItem('bd_user'); }catch(e){} }
+
+function periodStart(p){
+  const d = new Date();
+  if(p==='today'){ d.setHours(0,0,0,0); return d.toISOString(); }
+  if(p==='week'){ d.setDate(d.getDate()-7); return d.toISOString(); }
+  if(p==='month'){ d.setDate(d.getDate()-30); return d.toISOString(); }
+  return null; // all
+}
+function timeStr(iso){
+  const d = new Date(iso);
+  return d.toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit'}) + ' ' +
+         d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
+}
+
+/* ---------- login ---------- */
+async function doLogin(){
+  const login = $('inLogin').value.trim();
+  const parol = $('inParol').value;
+  if(!login || !parol){ msg($('loginMsg'),'Login va parolni kiriting','err'); return; }
+  $('btnLogin').disabled = true;
+  const { data, error } = await sb.from('xodimlar')
+    .select('id,login,ism,rol,faol')
+    .eq('login', login).eq('parol', parol).eq('faol', true).limit(1);
+  $('btnLogin').disabled = false;
+  if(error){ msg($('loginMsg'),'Xatolik: '+error.message,'err'); return; }
+  if(!data || !data.length){ msg($('loginMsg'),'Login yoki parol xato','err'); return; }
+  user = data[0]; save(user); enterApp();
+}
+
+function enterApp(){
+  $('loginView').classList.add('hidden');
+  $('appView').classList.remove('hidden');
+  $('whoAmI').textContent = user.ism + (user.rol==='boss' ? ' • Boshliq' : '');
+  const isBoss = user.rol==='boss';
+  $('bossBlock').classList.toggle('hidden', !isBoss);
+  // sellers also can add; boss adds too (keeps it flexible)
+  if(isBoss){ loadXodimList(); }
+  refresh();
+}
+
+function logout(){ user=null; wipe();
+  $('appView').classList.add('hidden'); $('loginView').classList.remove('hidden');
+  $('inLogin').value=''; $('inParol').value=''; msg($('loginMsg'),'','');
+}
+
+/* ---------- add xizmat ---------- */
+async function addXizmat(){
+  const mijoz = $('fMijoz').value.trim();
+  const xizmat = $('fXizmat').value.trim();
+  const summa = Number($('fSumma').value)||0;
+  if(!mijoz){ msg($('addMsg'),'Mijoz ismini kiriting','err'); return; }
+  if(!xizmat){ msg($('addMsg'),'Xizmat nomini kiriting','err'); return; }
+  if(summa<=0){ msg($('addMsg'),'Summani kiriting','err'); return; }
+
+  const full = $('fFullPaid').checked;
+  let paid = full ? summa : (Number($('fPaid').value)||0);
+  if(paid>summa) paid = summa;
+  const holati = paid>=summa ? 'tolangan' : 'qarz';
+
+  $('btnAdd').disabled = true;
+  const { error } = await sb.from('xizmatlar').insert({
+    mijoz_nomi:mijoz, telefon:$('fTel').value.trim(), xizmat_nomi:xizmat,
+    summa:summa, tolangan_summa:paid, tolov_holati:holati,
+    xodim_id:user.id, xodim_ism:user.ism, izoh:$('fIzoh').value.trim()
+  });
+  $('btnAdd').disabled = false;
+  if(error){ msg($('addMsg'),'Saqlashda xatolik: '+error.message,'err'); return; }
+  // clear
+  $('fMijoz').value=''; $('fTel').value=''; $('fXizmat').value='';
+  $('fSumma').value=''; $('fPaid').value=''; $('fIzoh').value='';
+  $('fFullPaid').checked=true; $('paidWrap').classList.add('hidden');
+  msg($('addMsg'),'Saqlandi ✓','ok');
+  setTimeout(()=>msg($('addMsg'),'',''),2000);
+  refresh();
+}
+
+/* ---------- load & render ---------- */
+async function loadXodimList(){
+  const { data } = await sb.from('xodimlar').select('id,ism,rol').eq('faol',true).order('id');
+  allXodim = data||[];
+  const sel = $('fltXodim');
+  sel.innerHTML = '<option value="">Barcha xodim</option>' +
+    allXodim.filter(x=>x.rol!=='boss').map(x=>`<option value="${x.id}">${x.ism}</option>`).join('');
+}
+
+async function refresh(){
+  const isBoss = user.rol==='boss';
+
+  if(isBoss){
+    const { data, error } = await sb.from('xizmatlar').select('*')
+      .order('sana',{ascending:false}).limit(5000);
+    if(error){ $('recList').innerHTML = `<div class="empty">Xatolik: ${error.message}</div>`; return; }
+    let rows = data||[];
+    const xid = $('fltXodim').value;
+    if(xid) rows = rows.filter(r=>String(r.xodim_id)===xid);
+    const s = $('fltSearch').value.trim().toLowerCase();
+    if(s) rows = rows.filter(r=>
+      (r.mijoz_nomi||'').toLowerCase().includes(s) ||
+      (r.telefon||'').toLowerCase().includes(s) ||
+      (r.xizmat_nomi||'').toLowerCase().includes(s));
+    renderTotals(rows);
+    renderReport(rows, $('fltPeriod').value);
+    renderWorkerSummary(rows);
+    $('listTitle').textContent = 'Yozuvlar (oxirgi 100 ta)';
+    renderList(rows.slice(0,100), true);
+  }else{
+    const { data, error } = await sb.from('xizmatlar').select('*')
+      .eq('xodim_id', user.id).gte('sana', periodStart('today'))
+      .order('sana',{ascending:false}).limit(500);
+    if(error){ $('recList').innerHTML = `<div class="empty">Xatolik: ${error.message}</div>`; return; }
+    $('listTitle').textContent = 'Bugungi yozuvlarim';
+    renderList(data||[], false);
+  }
+}
+
+/* ---------- report grouping ---------- */
+const UZ_MONTHS = ['Yanvar','Fevral','Mart','Aprel','May','Iyun','Iyul','Avgust','Sentabr','Oktabr','Noyabr','Dekabr'];
+function pad(n){ return String(n).padStart(2,'0'); }
+function periodKey(iso, type){
+  const d = new Date(iso);
+  if(type==='kun'){
+    return { key:`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`,
+             label:`${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}`,
+             sort:d.getTime() };
+  }
+  if(type==='hafta'){
+    const t = new Date(d); const off = (t.getDay()+6)%7; // Monday=0
+    t.setDate(t.getDate()-off); t.setHours(0,0,0,0);
+    const end = new Date(t); end.setDate(t.getDate()+6);
+    return { key:`w${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`,
+             label:`${pad(t.getDate())}.${pad(t.getMonth()+1)} – ${pad(end.getDate())}.${pad(end.getMonth()+1)}`,
+             sort:t.getTime() };
+  }
+  if(type==='oy'){
+    return { key:`${d.getFullYear()}-${pad(d.getMonth()+1)}`,
+             label:`${UZ_MONTHS[d.getMonth()]} ${d.getFullYear()}`,
+             sort:new Date(d.getFullYear(),d.getMonth(),1).getTime() };
+  }
+  return { key:String(d.getFullYear()), label:String(d.getFullYear()),
+           sort:new Date(d.getFullYear(),0,1).getTime() };
+}
+function renderReport(rows, type){
+  const map = {};
+  rows.forEach(r=>{
+    const pk = periodKey(r.sana, type);
+    if(!map[pk.key]) map[pk.key] = {label:pk.label, sort:pk.sort, cnt:0, sum:0, paid:0};
+    const m = map[pk.key];
+    m.cnt++; m.sum += Number(r.summa)||0; m.paid += Number(r.tolangan_summa)||0;
+  });
+  const list = Object.values(map).sort((a,b)=>b.sort-a.sort);
+  $('reportBody').innerHTML = list.length ? list.map(m=>
+    `<tr><td>${m.label}</td><td class="num">${m.cnt}</td>
+     <td class="num">${fmt(m.sum)}</td>
+     <td class="num" style="color:var(--debt)">${fmt(m.sum-m.paid)}</td></tr>`
+  ).join('') : '<tr><td colspan="4" style="text-align:center;color:var(--muted)">Ma\'lumot yo\'q</td></tr>';
+}
+
+function renderTotals(rows){
+  let t=0,p=0;
+  rows.forEach(r=>{ t+=Number(r.summa)||0; p+=Number(r.tolangan_summa)||0; });
+  $('tTotal').textContent = fmt(t);
+  $('tPaid').textContent  = fmt(p);
+  $('tDebt').textContent  = fmt(t-p);
+}
+
+function renderWorkerSummary(rows){
+  const map = {};
+  rows.forEach(r=>{
+    const k = r.xodim_ism || '—';
+    if(!map[k]) map[k]={cnt:0,sum:0,paid:0};
+    map[k].cnt++; map[k].sum+=Number(r.summa)||0; map[k].paid+=Number(r.tolangan_summa)||0;
+  });
+  const keys = Object.keys(map).sort((a,b)=>map[b].sum-map[a].sum);
+  $('workerSummary').innerHTML = keys.length ? keys.map(k=>
+    `<tr><td>${k}</td><td class="num">${map[k].cnt}</td>
+     <td class="num">${fmt(map[k].sum)}</td>
+     <td class="num" style="color:var(--debt)">${fmt(map[k].sum-map[k].paid)}</td></tr>`
+  ).join('') : '<tr><td colspan="4" style="text-align:center;color:var(--muted)">Ma\'lumot yo\'q</td></tr>';
+}
+
+function renderList(rows, isBoss){
+  if(!rows.length){ $('recList').innerHTML = '<div class="empty">Hozircha yozuv yo\'q</div>'; return; }
+  $('recList').innerHTML = rows.map(r=>{
+    const summa=Number(r.summa)||0, paid=Number(r.tolangan_summa)||0, qarz=summa-paid;
+    const isDebt = qarz>0;
+    const tel = r.telefon ? `<a class="call" href="tel:${r.telefon}">${r.telefon}</a>` : '';
+    const payBtn = isDebt ? `<button class="btn btn-sm btn-ghost" onclick="payDebt(${r.id},${qarz})">To'lov qo'shish</button>` : '';
+    return `<div class="rec">
+      <div class="top">
+        <div>
+          <div class="name">${r.mijoz_nomi||''}</div>
+          <div class="svc">${r.xizmat_nomi||''}</div>
+        </div>
+        <div style="text-align:right">
+          <div class="sum num">${fmt(summa)}</div>
+          <span class="pill ${isDebt?'debt':'paid'}">${isDebt?('Qarz '+fmt(qarz)):'To\'langan'}</span>
+        </div>
+      </div>
+      <div class="meta">
+        ${tel}
+        ${isBoss?('<span>'+(r.xodim_ism||'')+'</span>'):''}
+        <span>${timeStr(r.sana)}</span>
+        ${r.izoh?('<span>'+r.izoh+'</span>'):''}
+      </div>
+      ${payBtn?('<div class="actions">'+payBtn+'</div>'):''}
+    </div>`;
+  }).join('');
+}
+
+/* ---------- pay debt ---------- */
+async function payDebt(id, qarz){
+  const inp = prompt('To\'lov summasi (qolgan qarz: '+fmt(qarz)+')', qarz);
+  if(inp===null) return;
+  const add = Number(inp)||0;
+  if(add<=0) return;
+  const { data } = await sb.from('xizmatlar').select('summa,tolangan_summa').eq('id',id).limit(1);
+  if(!data||!data.length) return;
+  const summa=Number(data[0].summa)||0;
+  let paid=(Number(data[0].tolangan_summa)||0)+add;
+  if(paid>summa) paid=summa;
+  const holati = paid>=summa?'tolangan':'qarz';
+  const { error } = await sb.from('xizmatlar').update({tolangan_summa:paid, tolov_holati:holati}).eq('id',id);
+  if(error){ alert('Xatolik: '+error.message); return; }
+  refresh();
+}
+
+/* ---------- events ---------- */
+$('btnLogin').onclick = doLogin;
+$('inParol').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
+$('btnLogout').onclick = logout;
+$('btnAdd').onclick = addXizmat;
+$('fFullPaid').addEventListener('change', e=>{
+  $('paidWrap').classList.toggle('hidden', e.target.checked);
+});
+['fltPeriod','fltXodim'].forEach(id=>$(id).addEventListener('change', refresh));
+$('fltSearch').addEventListener('input', ()=>{ clearTimeout(window._t); window._t=setTimeout(refresh,300); });
+
+/* ---------- auto login ---------- */
+(function(){
+  const saved = load();
+  if(saved && saved.id){ user = saved; enterApp(); }
+})();
+</script>
+</body>
+</html>
